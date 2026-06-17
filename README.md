@@ -21,7 +21,8 @@ Comprar productos.
 Agendar citas.
 Calificar.
 Ver perfiles.
-Cliente
+
+Cliente.
 
 Puede:
 
@@ -33,6 +34,7 @@ Cancelar citas.
 Ver historial.
 Ver pedidos.
 Calificar barberos.
+
 Barbero
 
 Puede:
