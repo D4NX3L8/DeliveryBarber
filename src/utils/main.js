@@ -1,6 +1,8 @@
 import { getData, saveData }
 from "./localstorage.js";
 
+
+//Se crea el perfin de admin en el local storage.
 const users = getData("users");
 
 const adminExists =

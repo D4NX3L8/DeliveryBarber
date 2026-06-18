@@ -1,12 +1,12 @@
 import User from "../models/user-model.js";
-import { saveData, getData } from "../utils/localstorage.js";
+import { saveData, getData, removeData } from "../utils/localstorage.js";
 
 //Regiatrar Usuario.
 export function registerUser(name, email, password, role) {
     const users = getData("users");
 
     //Valida que el usuario no exista.
-    const existingUser = users.find((user) => user.email === email);
+    const existingUser = users.find((user) => user.email.toLowerCase() === email.toLowerCase());
 
     if (existingUser) {
         return {
@@ -21,7 +21,7 @@ export function registerUser(name, email, password, role) {
 
     saveData("users", users);
 
-    return user;
+    return { success: true, user };
 }
 
 //Iniciar sesión.
@@ -57,6 +57,9 @@ export function getCurrentUser() {
 
 //Redireccion según el tipo de rol.
 export function redirectByRole(user) {
+
+    console.log(user.rol)
+
     if (user.role === "client") {
         window.location.href = "../client/dashboard.html";
     }
