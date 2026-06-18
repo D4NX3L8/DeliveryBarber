@@ -1,321 +1,452 @@
-Roles del sistema
+# DeliveryBarber
 
-Tendrás 3 tipos de usuarios:
+Proyecto web para la gestion de una barberia con roles de cliente, barbero y administrador. La aplicacion usa HTML, JavaScript modular y `localStorage` para manejar usuarios, sesiones y flujo basico de navegacion.
 
-Invitado (sin iniciar sesión)
+## Objetivo
+
+Centralizar en una sola app:
+
+- Inicio de sesion y registro.
+- Gestion de citas.
+- Compra de productos.
+- Gestion de perfiles segun el rol.
+- Administracion basica del negocio.
+
+## Roles Del Sistema
+
+### Invitado
 
 Puede:
 
-Ver la página de inicio.
-Ver servicios.
-Ver productos.
-Ver galería de trabajos.
-Ver barberos disponibles.
-Ver contacto.
-Registrarse.
-Iniciar sesión.
+- Ver la pagina de inicio.
+- Ver servicios.
+- Ver productos.
+- Ver galeria de trabajos.
+- Ver barberos disponibles.
+- Ver contacto.
+- Registrarse.
+- Iniciar sesion.
 
 No puede:
 
-Comprar productos.
-Agendar citas.
-Calificar.
-Ver perfiles.
+- Comprar productos.
+- Agendar citas.
+- Calificar.
+- Ver perfiles privados.
 
-Cliente.
-
-Puede:
-
-Editar perfil.
-Comprar productos.
-Agendar citas.
-Modificar citas.
-Cancelar citas.
-Ver historial.
-Ver pedidos.
-Calificar barberos.
-
-Barbero
+### Cliente
 
 Puede:
 
-Gestionar perfil profesional.
-Configurar disponibilidad.
-Ver solicitudes.
-Aceptar o rechazar citas.
-Ver historial de servicios.
-Ver calificaciones recibidas.
-Administrador
+- Editar perfil.
+- Comprar productos.
+- Agendar citas.
+- Modificar citas.
+- Cancelar citas.
+- Ver historial.
+- Ver pedidos.
+- Calificar barberos.
+
+### Barbero
 
 Puede:
 
-Crear cuentas de barberos.
-Gestionar usuarios.
-Gestionar productos.
-Gestionar citas.
-Gestionar solicitudes de empleo.
-Ver estadísticas.
-Páginas públicas
+- Gestionar perfil profesional.
+- Configurar disponibilidad.
+- Ver solicitudes.
+- Aceptar o rechazar citas.
+- Ver historial de servicios.
+- Ver calificaciones recibidas.
 
-Estas son las que cualquier visitante puede ver.
+### Administrador
 
-1. Inicio
-index.html
+Puede:
 
-Contenido:
+- Crear cuentas de barberos.
+- Gestionar usuarios.
+- Gestionar productos.
+- Gestionar citas.
+- Gestionar solicitudes de empleo.
+- Ver estadisticas.
 
-Hero principal.
-Explicación de DeliveryBarber.
-Estadísticas.
-Beneficios.
-Servicios destacados.
-Testimonios.
-Llamado a registrarse.
-2. Servicios
-services.html
+## Paginas Del Proyecto
 
-Contenido:
+### Publicas
 
-Corte clásico.
-Corte moderno.
-Barba.
-Corte + barba.
-Domicilio premium.
-3. Productos
-products.html
+#### 1. Inicio
 
-Contenido:
+Archivo: `index.html`
 
-Catálogo.
-Filtros.
-Búsqueda.
+Contenido esperado:
 
-Si no ha iniciado sesión:
+- Hero principal.
+- Explicacion de DeliveryBarber.
+- Estadisticas.
+- Beneficios.
+- Servicios destacados.
+- Testimonios.
+- Llamado a registrarse.
 
-Debes registrarte para comprar.
-4. Nuestros Trabajos
-gallery.html
+#### 2. Servicios
 
-Contenido:
+Archivo: `services.html`
 
-Galería de cortes.
-Antes y después.
-Trabajos destacados.
-5. Barberos
-barbers.html
+Contenido esperado:
 
-Contenido:
+- Corte clasico.
+- Corte moderno.
+- Barba.
+- Corte + barba.
+- Domicilio premium.
 
-Foto.
-Especialidad.
-Calificación.
-Experiencia.
-6. Contacto
-contact.html
+#### 3. Productos
 
-Contenido:
+Archivo: `products.html`
 
-Misión.
-Visión.
-Formulario de contacto.
-Trabaja con nosotros.
-7. Registro e Inicio de Sesión
-auth.html
+Contenido esperado:
 
-Tendrá:
+- Catalogo.
+- Filtros.
+- Busqueda.
 
-Login.
-Registro.
-Páginas del Cliente
+Nota:
 
-Aparecen después de iniciar sesión.
+- Si el usuario no ha iniciado sesion, debe registrarse para comprar.
 
-8. Dashboard Cliente
-client-dashboard.html
+#### 4. Nuestros Trabajos
 
-Será la página principal del cliente.
+Archivo: `gallery.html`
 
-Mostrará:
+Contenido esperado:
 
-Próxima cita.
-Últimos pedidos.
-Accesos rápidos.
-9. Agendar Cita
-book-appointment.html
+- Galeria de cortes.
+- Antes y despues.
+- Trabajos destacados.
 
-Contenido:
+#### 5. Barberos
 
-Selección de servicio.
-Fecha.
-Hora.
-Dirección.
-Barbero.
-10. Mis Citas
-appointments.html
+Archivo: `barbers.html`
 
-Contenido:
+Contenido esperado:
 
-Pendientes.
-Completadas.
-Canceladas.
+- Foto.
+- Especialidad.
+- Calificacion.
+- Experiencia.
 
-Acciones:
+#### 6. Contacto
 
-Editar.
-Cancelar.
-11. Mis Compras
-orders.html
+Archivo: `contact.html`
 
-Contenido:
+Contenido esperado:
 
-Historial de productos.
-12. Perfil
-profile.html
+- Mision.
+- Vision.
+- Formulario de contacto.
+- Trabaja con nosotros.
 
-Contenido:
+#### 7. Login Y Registro
 
-Información personal.
-Editar datos.
-13. Historial
-history.html
+Archivo de login: `src/views/auth/login.html`
 
-Contenido:
+Archivo de registro: `src/views/auth/register.html`
 
-Servicios realizados.
-Calificaciones dadas.
-Páginas del Barbero
-14. Dashboard Barbero
-barber-dashboard.html
+Contenido esperado:
 
-Contenido:
+- Inicio de sesion.
+- Registro de clientes.
 
-Citas del día.
-Próximos servicios.
-Ganancias simuladas.
-15. Gestión de Citas
-barber-appointments.html
+### Cliente
 
-Contenido:
+#### 8. Dashboard Cliente
 
-Solicitudes nuevas.
-Aceptadas.
-Finalizadas.
-16. Disponibilidad
-availability.html
+Archivo: `client-dashboard.html`
 
-Contenido:
+Contenido esperado:
 
-Días disponibles.
-Horarios disponibles.
-17. Perfil Profesional
-barber-profile.html
+- Proxima cita.
+- Ultimos pedidos.
+- Accesos rapidos.
 
-Contenido:
+#### 9. Agendar Cita
 
-Especialidades.
-Descripción.
-Experiencia.
-18. Reseñas
-reviews.html
+Archivo: `book-appointment.html`
 
-Contenido:
+Contenido esperado:
 
-Comentarios.
-Calificaciones.
-Páginas del Administrador
-19. Dashboard Admin
-admin-dashboard.html
+- Seleccion de servicio.
+- Fecha.
+- Hora.
+- Direccion.
+- Barbero.
 
-Contenido:
+#### 10. Mis Citas
 
-Estadísticas generales.
-20. Gestión de Usuarios
-manage-users.html
+Archivo: `appointments.html`
 
-CRUD de:
+Contenido esperado:
 
-Clientes.
-Barberos.
-21. Gestión de Productos
-manage-products.html
+- Pendientes.
+- Completadas.
+- Canceladas.
 
-CRUD completo.
+Acciones esperadas:
 
-22. Gestión de Citas
-manage-appointments.html
+- Editar.
+- Cancelar.
 
-Ver todas las citas.
+#### 11. Mis Compras
 
-23. Solicitudes de Empleo
-job-applications.html
+Archivo: `orders.html`
 
-Muy importante.
+Contenido esperado:
 
-Aquí llegarán los formularios de:
+- Historial de productos.
 
-Trabaja con Nosotros
-Estructura HTML recomendada
+#### 12. Perfil
+
+Archivo: `profile.html`
+
+Contenido esperado:
+
+- Informacion personal.
+- Editar datos.
+
+#### 13. Historial
+
+Archivo: `history.html`
+
+Contenido esperado:
+
+- Servicios realizados.
+- Calificaciones dadas.
+
+### Barbero
+
+#### 14. Dashboard Barbero
+
+Archivo: `barber-dashboard.html`
+
+Contenido esperado:
+
+- Citas del dia.
+- Proximos servicios.
+- Ganancias simuladas.
+
+#### 15. Gestion De Citas
+
+Archivo: `barber-appointments.html`
+
+Contenido esperado:
+
+- Solicitudes nuevas.
+- Aceptadas.
+- Finalizadas.
+
+#### 16. Disponibilidad
+
+Archivo: `availability.html`
+
+Contenido esperado:
+
+- Dias disponibles.
+- Horarios disponibles.
+
+#### 17. Perfil Profesional
+
+Archivo: `barber-profile.html`
+
+Contenido esperado:
+
+- Especialidades.
+- Descripcion.
+- Experiencia.
+
+#### 18. Resenas
+
+Archivo: `reviews.html`
+
+Contenido esperado:
+
+- Comentarios.
+- Calificaciones.
+
+### Administrador
+
+#### 19. Dashboard Admin
+
+Archivo: `admin-dashboard.html`
+
+Contenido esperado:
+
+- Estadisticas generales.
+
+#### 20. Gestion De Usuarios
+
+Archivo: `manage-users.html`
+
+Contenido esperado:
+
+- CRUD de clientes.
+- CRUD de barberos.
+
+#### 21. Gestion De Productos
+
+Archivo: `manage-products.html`
+
+Contenido esperado:
+
+- CRUD completo de productos.
+
+#### 22. Gestion De Citas
+
+Archivo: `manage-appointments.html`
+
+Contenido esperado:
+
+- Ver todas las citas.
+
+#### 23. Solicitudes De Empleo
+
+Archivo: `job-applications.html`
+
+Contenido esperado:
+
+- Recepcion de formularios de "Trabaja con nosotros".
+
+## Estructura HTML Recomendada
+
+```text
 pages/
-│
 ├── services.html
 ├── products.html
 ├── gallery.html
 ├── barbers.html
 ├── contact.html
 ├── auth.html
-│
 ├── client-dashboard.html
 ├── book-appointment.html
 ├── appointments.html
 ├── orders.html
 ├── profile.html
 ├── history.html
-│
 ├── barber-dashboard.html
 ├── barber-appointments.html
 ├── availability.html
 ├── barber-profile.html
 ├── reviews.html
-│
 ├── admin-dashboard.html
 ├── manage-users.html
 ├── manage-products.html
 ├── manage-appointments.html
 └── job-applications.html
-Algo que no habías contemplado y vale mucho la pena
+```
 
-Añadir un sistema de:
+## Mejoras Recomendadas
 
-Favoritos
+### Favoritos
 
-El cliente puede guardar barberos favoritos.
+Permitir que el cliente guarde barberos favoritos.
 
-favorites.html
-Notificaciones
-notifications.html
+Archivo sugerido:
+
+- `favorites.html`
+
+### Notificaciones
+
+Agregar notificaciones basicas para mejorar la experiencia.
+
+Archivo sugerido:
+
+- `notifications.html`
 
 Ejemplos:
 
-Tu cita fue aceptada.
-Tu cita fue modificada.
-Tu compra fue registrada.
+- Tu cita fue aceptada.
+- Tu cita fue modificada.
+- Tu compra fue registrada.
 
-Aunque sea con Local Storage, da una apariencia mucho más profesional al proyecto.
+Nota:
 
-Mi recomendación es que para la primera versión te quedes con unas 15-18 páginas y no implementes todo de una vez. Empieza por:
+- Aunque sea con `localStorage`, este modulo da una apariencia mucho mas profesional al proyecto.
 
-Inicio
-Servicios
-Productos
-Galería
-Contacto
-Login/Registro
-Dashboard Cliente
-Agendar Cita
-Mis Citas
-Perfil Cliente
-Dashboard Barbero
-Gestión de Citas Barbero
-Dashboard Admin
-Gestión de Usuarios
-Gestión de Productos
+## Alcance Recomendado Para La Primera Version
+
+Para una primera entrega, conviene implementar entre 15 y 18 paginas y priorizar:
+
+- Inicio.
+- Servicios.
+- Productos.
+- Galeria.
+- Contacto.
+- Login y registro.
+- Dashboard cliente.
+- Agendar cita.
+- Mis citas.
+- Perfil cliente.
+- Dashboard barbero.
+- Gestion de citas del barbero.
+- Dashboard admin.
+- Gestion de usuarios.
+- Gestion de productos.
+
+## Cambios Realizados Y Justificacion
+
+### 1. Correccion Del Dashboard De Cliente
+
+Archivo afectado:
+
+- `src/views/client/dashboard.html`
+
+Problema:
+
+- El dashboard del cliente cargaba `public/js/guards/admin-guard.js`.
+- Eso hacia que, despues de iniciar sesion como cliente, la validacion del rol fallara y el sistema lo redirigiera nuevamente al login.
+
+Solucion aplicada:
+
+- Se reemplazo `admin-guard.js` por `client-guard.js`.
+
+Justificacion:
+
+- Cada vista protegida debe validar el rol correcto.
+- El dashboard del cliente no puede depender del guard de administrador porque eso rompe el flujo de autenticacion del rol `client`.
+
+### 2. Activacion De `index.html` Como Punto De Entrada
+
+Archivo afectado:
+
+- `index.html`
+
+Problema:
+
+- El archivo `index.html` no mostraba una pantalla util para el usuario al abrir la app.
+
+Solucion aplicada:
+
+- Se dejo `index.html` como punto de entrada y ahora redirige al login en `src/views/auth/login.html`.
+
+Justificacion:
+
+- Esto permite que la app tenga un acceso inicial claro y funcional.
+- Tambien mejora la experiencia de prueba porque al ejecutar el proyecto se entra directamente al flujo de autenticacion.
+
+### 3. Correccion Del Boton De Registro En Login
+
+Archivo afectado:
+
+- `src/views/auth/login.html`
+
+Problema:
+
+- El boton `Registrarse` estaba declarado como `type="submit"`.
+- Al hacer clic, el formulario intentaba validar el login en lugar de abrir la vista de registro.
+
+Solucion aplicada:
+
+- Se cambio el boton a `type="button"` y se agrego la redireccion a `./register.html`.
+
+Justificacion:
+
+- `Iniciar Sesion` y `Registrarse` representan acciones distintas.
+- El boton de registro no debe disparar el `submit` del formulario de login porque genera una validacion incorrecta y bloquea la navegacion esperada.
