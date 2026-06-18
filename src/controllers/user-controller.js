@@ -61,14 +61,14 @@ export function redirectByRole(user) {
     console.log(user.rol)
 
     if (user.role === "client") {
-        window.location.href = "../client/dashboard.html";
+        return window.location.href = "../client/dashboard.html";
     }
 
     if (user.role === "barber") {
-        window.location.href = "../barber/dashboard.html";
+        return window.location.href = "../barber/dashboard.html";
     }
 
     if (user.role === "admin") {
-        window.location.href = "../admin/dashboard.html";
+        return window.location.href = "../admin/dashboard.html";
     }
 }

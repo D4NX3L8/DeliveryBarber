@@ -125,7 +125,7 @@ if (!user || Object.keys(user).length === 0) {
                 Reseñas
             </a>
 
-            <button id="logoutBtn">
+            <button type="button" id="logoutBtn">
                 Cerrar Sesión
             </button>
 
@@ -141,7 +141,7 @@ if (logoutBtn) {
 
     logoutBtn.addEventListener("click", () => {
 
-        logoutUser();
+        //logoutUser();
 
         window.location.href =
             "../../../src/views/auth/login.html";
