@@ -1,0 +1,108 @@
+/* =========================
+   FOOTER
+========================= */
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+
+    padding: 3rem 2rem;
+}
+
+.footer-brand,
+.footer-links,
+.footer-contact,
+.footer-team {
+    flex: 1;
+}
+
+/* =========================
+   TITULOS
+========================= */
+
+.footer-brand h3,
+.footer-links h4,
+.footer-contact h4,
+.footer-team h4 {
+    margin-bottom: 1rem;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+.footer-brand p,
+.footer-contact p,
+.footer-team p {
+    line-height: 1.6;
+}
+
+/* =========================
+   ENLACES
+========================= */
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: .7rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+}
+
+/* =========================
+   FOOTER INFERIOR
+========================= */
+
+.footer-bottom {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+
+@media (max-width: 768px) {
+
+    .footer-container {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-contact,
+    .footer-team {
+        flex: 1 1 45%;
+    }
+
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 576px) {
+
+    .footer-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-contact,
+    .footer-team {
+        width: 100%;
+    }
+
+}
