@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | DeliveryBarber</title>
+
+    <link rel="stylesheet" href="/public/css/global.css">
+    <link rel="stylesheet" href="/public/css/navbar.css">
+    <link rel="stylesheet" href="/public/css/footer.css">
+    <link rel="stylesheet" href="/public/css/public/contact.css">
+</head>
+<body>
+
+    <header id="navbar"></header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="container">
+
+                <h1>Contáctanos</h1>
+
+                <p>
+                    Estamos disponibles para resolver tus dudas,
+                    recibir tus sugerencias y conocer a futuros
+                    integrantes de nuestro equipo.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- INFORMACIÓN -->
+        <section class="contact-info">
+            <div class="container">
+
+                <h2 class="section-title">
+                    Información de Contacto
+                </h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card">
+                        <h3>Correo</h3>
+                        <p>contacto@deliverybarber.com</p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Teléfono</h3>
+                        <p>+57 300 000 0000</p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Ubicación</h3>
+                        <p>Medellín, Colombia</p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MISIÓN Y VISIÓN -->
+        <section class="about-company">
+            <div class="container">
+
+                <div class="grid grid-2">
+
+                    <article class="card">
+                        <h2>Misión</h2>
+
+                        <p>
+                            Brindar servicios de barbería a domicilio de alta
+                            calidad, conectando clientes con barberos
+                            profesionales de manera rápida, cómoda y segura.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h2>Visión</h2>
+
+                        <p>
+                            Convertirnos en la plataforma líder de servicios
+                            de barbería a domicilio en Colombia, ofreciendo
+                            innovación, confianza y oportunidades laborales.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FORMULARIO DE CONTACTO -->
+        <section class="contact-form-section">
+            <div class="container">
+
+                <h2 class="section-title">
+                    Envíanos un Mensaje
+                </h2>
+
+                <form id="contact-form">
+
+                    <div class="form-group">
+                        <label for="contact-name">
+                            Nombre
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contact-name"
+                            class="form-input"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">
+                            Correo Electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="contact-email"
+                            class="form-input"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">
+                            Mensaje
+                        </label>
+
+                        <textarea
+                            id="contact-message"
+                            class="form-textarea"
+                            rows="6"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Enviar Mensaje
+                    </button>
+
+                </form>
+
+            </div>
+        </section>
+
+        <!-- TRABAJA CON NOSOTROS -->
+        <section class="work-with-us">
+            <div class="container">
+
+                <h2 class="section-title">
+                    ¿Quieres ser parte de nuestro equipo?
+                </h2>
+
+                <p>
+                    Si eres un barbero profesional y deseas trabajar
+                    con DeliveryBarber, envíanos tu solicitud.
+                </p>
+
+                <form id="barber-application-form">
+
+                    <div class="grid grid-2">
+
+                        <div class="form-group">
+                            <label for="applicant-name">
+                                Nombre Completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="applicant-name"
+                                class="form-input"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-email">
+                                Correo Electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="applicant-email"
+                                class="form-input"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-phone">
+                                Teléfono
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="applicant-phone"
+                                class="form-input"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-experience">
+                                Años de Experiencia
+                            </label>
+
+                            <input
+                                type="number"
+                                id="applicant-experience"
+                                class="form-input"
+                                min="0"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="applicant-message">
+                            Cuéntanos sobre ti
+                        </label>
+
+                        <textarea
+                            id="applicant-message"
+                            class="form-textarea"
+                            rows="6"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Enviar Solicitud
+                    </button>
+
+                </form>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="container">
+
+                <h2>
+                    Únete a la experiencia DeliveryBarber
+                </h2>
+
+                <p>
+                    Agenda tus citas o forma parte de nuestro equipo.
+                </p>
+
+                <a
+                    href="../auth/register.html"
+                    class="btn btn-primary"
+                >
+                    Crear Cuenta
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script
+        type="module"
+        src="../../../public/js/components/navbar.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../../../public/js/components/footer.js"
+    ></script>
+
+</body>
+</html>

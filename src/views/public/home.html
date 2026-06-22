@@ -4,21 +4,143 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="/public/css/public/home.css">
+    <link rel="stylesheet" href="/public/css/global.css">
+    <link rel="stylesheet" href="/public/css/navbar.css">
+    <link rel="stylesheet" href="/public/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/public/home.css" />
   </head>
   <body>
     <header id="navbar"></header>
-
     <main>
-      <h1>Home</h1>
+      <!-- hero -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1>Barbería profesional hasta la puerta de tu casa</h1>
+
+            <p>
+              Agenda tu cita con los mejores barberos de tu ciudad y recibe un
+              servicio de calidad sin salir de casa.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="../auth/login.html" class="btn btn-primary">
+                Registrate
+              </a>
+
+              <a href="services.html" class="btn btn-secondary">
+                Ver Servicios
+              </a>
+
+              <a href="contact.html" class="btn btn-secondary">
+                Trabaja con nosotros
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- estadisticas -->
+      <section class="statistics">
+        <div class="container">
+          <h2 class="section-title">Nuestra Comunidad</h2>
+
+          <div class="grid grid-4">
+            <article class="card statistic-card">
+              <h3>500+</h3>
+              <p>Clientes</p>
+            </article>
+
+            <article class="card statistic-card">
+              <h3>50+</h3>
+              <p>Barberos</p>
+            </article>
+
+            <article class="card statistic-card">
+              <h3>1000+</h3>
+              <p>Servicios</p>
+            </article>
+
+            <article class="card statistic-card">
+              <h3>4.9</h3>
+              <p>Calificación</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- servicios destacados -->
+      <section class="featured-services">
+        <div class="container">
+          <h2 class="section-title">Servicios Destacados</h2>
+
+          <div class="grid grid-3">
+            <article class="card service-card">
+              <h3>Corte Clásico</h3>
+              <p>Corte tradicional para cualquier ocasión.</p>
+            </article>
+
+            <article class="card service-card">
+              <h3>Corte + Barba</h3>
+              <p>Servicio completo de cabello y barba.</p>
+            </article>
+
+            <article class="card service-card">
+              <h3>Servicio Premium</h3>
+              <p>Experiencia completa de barbería a domicilio.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- como funciona -->
+      <section class="how-it-works">
+        <div class="container">
+          <h2 class="section-title">¿Cómo funciona?</h2>
+
+          <div class="grid grid-3">
+            <article class="card">
+              <h3>1. Selecciona</h3>
+              <p>Escoge el servicio y el barbero de tu preferencia.</p>
+            </article>
+
+            <article class="card">
+              <h3>2. Agenda</h3>
+              <p>Selecciona la fecha, hora y dirección del servicio.</p>
+            </article>
+
+            <article class="card">
+              <h3>3. Espera tu cita</h3>
+              <p>Recibe a tu barbero en casa y disfruta la experiencia.</p>
+            </article>
+          </div>
+        </div>
+        <!-- cta -->
+        <section class="cta"></section>
+        <div class="container">
+          <h2>¿Listo para tu próximo cambio de look?</h2>
+
+          <p>Únete a DeliveryBarber y agenda tu primera cita en minutos.</p>
+
+          <a href="../auth/register.html" class="btn btn-primary">
+            Crear Cuenta
+          </a>
+        </div>
+      </section>
     </main>
 
+    <!-- Footer -->
+    <footer id="footer"></footer>
 
-
-
-
+    <script
+      type="module"
+      src="../../../public/js/components/footer.js"
+    ></script>
 
     <!-- Este Scrpit genera automaticamente el navbar según el perifl -->
-    <script type="module" src="../../../public/js/components/navbar.js"></script>
+    <script
+      type="module"
+      src="../../../public/js/components/navbar.js"
+    ></script>
   </body>
 </html>
