@@ -8,19 +8,26 @@
   <body>
     <h1>Dashboard Barbero</h1>
 
+    <header id="navbar"></header>
 
+    <main>
+      <h1 id="welcomeMessage"></h1>
 
+      <h2>Total de citas</h2>
 
+      <p id="appointmentsCount"></p>
 
+      <h2>Pendientes</h2>
 
+      <p id="pendingCount"></p>
+    </main>
 
+    <script
+      type="module"
+      src="../../../public/js/components/navbar.js"
+    ></script>
 
-
-
-
-
-
-
+    <script type="module" src="../../../public/js/barber/dashboard.js"></script>
 
     <!--conecta con middleware-->
     <script type="module" src="../../middleware/auth.js"></script>
@@ -28,8 +35,14 @@
     <script type="module" src="../../middleware/barber.js"></script>
 
     <!--conecta con los guards-->
-    <script type="module" src="../../../public/js/guards/auth-guard.js"></script>
+    <script
+      type="module"
+      src="../../../public/js/guards/auth-guard.js"
+    ></script>
 
-    <script type="module" src="../../../public/js/guards/barber-guard.js"></script>
+    <script
+      type="module"
+      src="../../../public/js/guards/barber-guard.js"
+    ></script>
   </body>
 </html>

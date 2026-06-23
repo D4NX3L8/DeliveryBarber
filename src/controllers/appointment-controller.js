@@ -120,3 +120,16 @@ export function completeAppointment(id) {
 
     saveData("appointments", appointments);
 }
+
+//Obtiene las citas de un barbero
+export function getBarberAppointments(barberId) {
+
+    const appointments =
+        getData("appointments");
+
+    return appointments.filter(
+        appointment =>
+            appointment.barberId === barberId
+    );
+
+}
