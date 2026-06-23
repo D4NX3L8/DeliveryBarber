@@ -1,0 +1,127 @@
+import {
+    getApplications,
+    approveApplication,
+    rejectApplication,
+    deleteApplication,
+} from "../../../src/controllers/application-controller.js";
+
+import { updateUserRole } from "../../../src/controllers/user-controller.js";
+
+const applicationsContainer = document.getElementById("applicationsContainer");
+
+const applications = getApplications();
+
+if (applications.length === 0) {
+    applicationsContainer.innerHTML = `
+        <p>
+            No hay solicitudes registradas.
+        </p>
+    `;
+}
+
+applications.forEach((application) => {
+    applicationsContainer.innerHTML += `
+
+        <div>
+
+            <h3>
+                ${application.name}
+            </h3>
+
+            <p>
+                ${application.email}
+            </p>
+
+            <p>
+                Experiencia:
+                ${application.experience}
+            </p>
+
+            <p>
+                Estado:
+                ${application.status}
+            </p>
+
+            <button
+                class="approveBtn"
+                data-id="${application.id}"
+                data-userid="${application.userId}">
+                Aprobar
+            </button>
+            <button
+                class="rejectBtn"
+                data-id="${application.id}">
+                Rechazar
+            </button>
+
+        </div>
+
+        <hr>
+
+    `;
+});
+
+
+const approveButtons =
+    document.querySelectorAll(".approveBtn");
+
+approveButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const applicationId =
+            Number(button.dataset.id);
+
+        const userId =
+            Number(button.dataset.userid);
+
+        approveApplication(
+            applicationId
+        );
+
+        updateUserRole(
+            userId,
+            "barber"
+        );
+
+        deleteApplication(
+            applicationId
+        );
+
+        alert(
+            "Solicitud aprobada"
+        );
+
+        location.reload();
+
+    });
+
+});
+
+const rejectButtons =
+    document.querySelectorAll(".rejectBtn");
+
+rejectButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const applicationId =
+            Number(button.dataset.id);
+
+        rejectApplication(
+            applicationId
+        );
+
+        deleteApplication(
+            applicationId
+        );
+
+        alert(
+            "Solicitud rechazada"
+        );
+
+        location.reload();
+
+    });
+
+});

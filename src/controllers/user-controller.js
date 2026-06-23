@@ -37,10 +37,11 @@ export function loginUser(email, password) {
     }
 
     saveData("session", {
-        id: user.id,
-        name: user.name,
-        role: user.role,
-    });
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+});
 
     return user;
 }
@@ -91,6 +92,33 @@ export function deleteUser(id) {
     saveData(
         "users",
         updatedUsers
+    );
+
+}
+
+//Convertir usuario en barbero
+export function updateUserRole(
+    id,
+    role
+) {
+
+    const users =
+        getData("users");
+
+    const user =
+        users.find(
+            user => user.id === id
+        );
+
+    if (!user) {
+        return;
+    }
+
+    user.role = role;
+
+    saveData(
+        "users",
+        users
     );
 
 }
