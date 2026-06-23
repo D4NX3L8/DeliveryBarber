@@ -72,3 +72,25 @@ export function redirectByRole(user) {
         return window.location.href = "../admin/dashboard.html";
     }
 }
+
+//Obtener todos los usuarios
+export function getUsers() {
+    return getData("users");
+}
+
+//Eliminar usuario
+export function deleteUser(id) {
+
+    const users = getData("users");
+
+    const updatedUsers =
+        users.filter(
+            user => user.id !== id
+        );
+
+    saveData(
+        "users",
+        updatedUsers
+    );
+
+}

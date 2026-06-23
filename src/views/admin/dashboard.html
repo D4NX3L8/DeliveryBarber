@@ -6,33 +6,44 @@
     <title>Admin</title>
   </head>
   <body>
+    <header id="navbar"></header>
+
     <h1>Dashboard Administrador</h1>
 
+    <main>
+      <h1 id="welcomeMessage"></h1>
 
+      <h2>Total Usuarios</h2>
+      <p id="usersCount"></p>
 
+      <h2>Clientes</h2>
+      <p id="clientsCount"></p>
 
+      <h2>Barberos</h2>
+      <p id="barbersCount"></p>
 
+      <h2>Total Citas</h2>
+      <p id="appointmentsCount"></p>
+    </main>
 
+    <script type="module"src="../../../public/js/components/navbar.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
+    <script type="module" src="../../../public/js/admin/dashboard.js"></script>
+    
     <!-- conecta con middleware -->
     <script type="module" src="../../middleware/auth.js"></script>
 
     <script type="module" src="../../middleware/admin.js"></script>
 
     <!-- conecta con los guards -->
-    <script type="module" src="../../../public/js/guards/auth-guard.js"></script>
+    <script
+      type="module"
+      src="../../../public/js/guards/auth-guard.js"
+    ></script>
 
-    <script type="module" src="../../../public/js/guards/admin-guard.js"></script>
+    <script
+      type="module"
+      src="../../../public/js/guards/admin-guard.js"
+    ></script>
   </body>
 </html>
