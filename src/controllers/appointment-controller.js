@@ -133,3 +133,22 @@ export function getBarberAppointments(barberId) {
     );
 
 }
+
+//Elimina usuarios.
+export function deleteAppointment(id) {
+
+    const appointments =
+        getData("appointments");
+
+    const updatedAppointments =
+        appointments.filter(
+            appointment =>
+                appointment.id !== id
+        );
+
+    saveData(
+        "appointments",
+        updatedAppointments
+    );
+
+}
