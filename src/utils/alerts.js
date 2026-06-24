@@ -35,10 +35,10 @@ export function showWarning(message) {
 
 }
 
-//Toast informativo
+//Toast
 export function showToast(message) {
 
-    Swal.mixin({
+    return Swal.mixin({
         toast: true,
         position: "top-end",
         showConfirmButton: false,
@@ -61,21 +61,29 @@ export function showToast(message) {
 
 }
 
-//Carga
-export function showLoading(message = "Procesando...") {
+//Loading
+export function showLoading(
+    message = "Procesando..."
+) {
 
-    Swal.fire({
+    return Swal.fire({
         title: message,
         html: "Por favor espera...",
         allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: false,
+
         didOpen: () => {
+
             Swal.showLoading();
+
         }
+
     });
 
 }
 
-//Cerrar loading manualmente
+//Cerrar loading
 export function closeLoading() {
 
     Swal.close();
@@ -87,12 +95,25 @@ export async function showConfirm(message) {
 
     const result =
         await Swal.fire({
-            title: "¿Estás seguro?",
-            text: message,
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: "Sí",
-            cancelButtonText: "Cancelar"
+
+            title:
+                "¿Estás seguro?",
+
+            text:
+                message,
+
+            icon:
+                "question",
+
+            showCancelButton:
+                true,
+
+            confirmButtonText:
+                "Sí",
+
+            cancelButtonText:
+                "Cancelar"
+
         });
 
     return result.isConfirmed;

@@ -1,51 +1,124 @@
 import {
+    createAppointment
+} from "../../../src/controllers/appointment-controller.js";
+
+import {
     getCurrentUser
 } from "../../../src/controllers/user-controller.js";
 
 import {
-    createApplication
-} from "../../../src/controllers/application-controller.js";
+    validateDate,
+    validateTime,
+    validateAddress
+} from "../../../src/utils/validators.js";
+
 import {
     showLoading,
     closeLoading,
     showSuccess,
+    showError
 } from "../../../src/utils/alerts.js";
-import { showSuccess } from "../../../src/utils/alerts.js";
 
-const form =
+const appointmentForm =
     document.getElementById(
-        "applicationForm"
+        "appointmentForm"
     );
 
-form.addEventListener(
+appointmentForm.addEventListener(
     "submit",
     (event) => {
 
         event.preventDefault();
 
-        showLoading("Enviando solicitud...");
-
         const user =
             getCurrentUser();
 
-        const experience =
+        const service =
             document.getElementById(
-                "experience"
+                "service"
             ).value;
 
-        createApplication(
+        const date =
+            document.getElementById(
+                "date"
+            ).value;
+
+        const time =
+            document.getElementById(
+                "time"
+            ).value;
+
+        const address =
+            document.getElementById(
+                "address"
+            ).value;
+
+        const dateError =
+            validateDate(date);
+
+        if (dateError) {
+
+            showError(
+                dateError
+            );
+
+            return;
+
+        }
+
+        const timeError =
+            validateTime(time);
+
+        if (timeError) {
+
+            showError(
+                timeError
+            );
+
+            return;
+
+        }
+
+        const addressError =
+            validateAddress(address);
+
+        if (addressError) {
+
+            showError(
+                addressError
+            );
+
+            return;
+
+        }
+
+        showLoading(
+            "Creando cita..."
+        );
+
+        const barberId = 1;
+
+        const barberName =
+            "Barbero Demo";
+
+        createAppointment(
             user.id,
             user.name,
-            user.email,
-            experience
+            barberId,
+            barberName,
+            service,
+            date,
+            time,
+            address
         );
 
         closeLoading();
+
         showSuccess(
-            "Solicitud enviada correctamente"
+            "Cita creada correctamente"
         );
 
-        form.reset();
+        appointmentForm.reset();
 
     }
 );

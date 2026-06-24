@@ -1,35 +1,89 @@
 import {
-  loginUser,
-  redirectByRole,
+    loginUser,
+    redirectByRole,
 } from "../../../src/controllers/user-controller.js";
+
 import {
-  showError,
-  showSuccess,
-  showLoading,
-  closeLoading,
+    validateEmail,
+    validatePassword,
+} from "../../../src/utils/validators.js";
+
+import {
+    showError,
+    showSuccess,
+    showLoading,
+    closeLoading,
 } from "../../../src/utils/alerts.js";
 
-const loginForm = document.getElementById("loginForm");
+const loginForm =
+    document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
 
-  const email = document.getElementById("email").value;
+    event.preventDefault();
 
-  const password = document.getElementById("password").value;
+    const email =
+        document.getElementById("email").value;
 
-  showLoading("Iniciando sesión...");
-  const user = loginUser(email, password);
+    const password =
+        document.getElementById("password").value;
 
-  if (!user) {
+    //Validaciones
+    const emailError =
+        validateEmail(email);
+
+    if (emailError) {
+
+        showError(emailError);
+
+        return;
+
+    }
+
+    const passwordError =
+        validatePassword(password);
+
+    if (passwordError) {
+
+        showError(passwordError);
+
+        return;
+
+    }
+
+    //Loading
+    showLoading(
+        "Iniciando sesión..."
+    );
+
+    const user =
+        loginUser(
+            email,
+            password
+        );
+
+    if (!user) {
+
+        closeLoading();
+
+        showError(
+            "Correo o contraseña incorrectos"
+        );
+
+        return;
+
+    }
+
     closeLoading();
-    showError("Correo o contraseña incorrectos");
 
-    return;
-  }
+    showSuccess(
+        "Inicio de sesión exitoso"
+    );
 
-  closeLoading();
-  showSuccess("Inicio de sesión exitoso").then(() => {
-    redirectByRole(user);
-  });
+    setTimeout(() => {
+
+        redirectByRole(user);
+
+    }, 1500);
+
 });

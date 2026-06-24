@@ -5,22 +5,36 @@ import {
     deleteApplication,
 } from "../../../src/controllers/application-controller.js";
 
-import { updateUserRole } from "../../../src/controllers/user-controller.js";
-import { showSuccess } from "../../../src/utils/alerts.js";
+import {
+    updateUserRole
+} from "../../../src/controllers/user-controller.js";
 
-const applicationsContainer = document.getElementById("applicationsContainer");
+import {
+    showLoading,
+    closeLoading,
+    showSuccess
+} from "../../../src/utils/alerts.js";
 
-const applications = getApplications();
+const applicationsContainer =
+    document.getElementById(
+        "applicationsContainer"
+    );
+
+const applications =
+    getApplications();
 
 if (applications.length === 0) {
+
     applicationsContainer.innerHTML = `
         <p>
             No hay solicitudes registradas.
         </p>
     `;
+
 }
 
 applications.forEach((application) => {
+
     applicationsContainer.innerHTML += `
 
         <div>
@@ -49,6 +63,7 @@ applications.forEach((application) => {
                 data-userid="${application.userId}">
                 Aprobar
             </button>
+
             <button
                 class="rejectBtn"
                 data-id="${application.id}">
@@ -60,73 +75,101 @@ applications.forEach((application) => {
         <hr>
 
     `;
+
 });
 
-
 const approveButtons =
-    document.querySelectorAll(".approveBtn");
+    document.querySelectorAll(
+        ".approveBtn"
+    );
 
 approveButtons.forEach((button) => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        const applicationId =
-            Number(button.dataset.id);
+            const applicationId =
+                Number(
+                    button.dataset.id
+                );
 
-        const userId =
-            Number(button.dataset.userid);
+            const userId =
+                Number(
+                    button.dataset.userid
+                );
 
-        showLoading("Procesando solicitud...");
-        approveApplication(
-            applicationId
-        );
+            showLoading(
+                "Procesando solicitud..."
+            );
 
-        updateUserRole(
-            userId,
-            "barber"
-        );
+            approveApplication(
+                applicationId
+            );
 
-        deleteApplication(
-            applicationId
-        );
+            updateUserRole(
+                userId,
+                "barber"
+            );
 
-        closeLoading();
-        showSuccess(
-            "Solicitud aprobada"
-        ).then(() => {
-            location.reload();
-        });
+            deleteApplication(
+                applicationId
+            );
 
-    });
+            closeLoading();
+
+            showSuccess(
+                "Solicitud aprobada"
+            ).then(() => {
+
+                location.reload();
+
+            });
+
+        }
+    );
 
 });
 
 const rejectButtons =
-    document.querySelectorAll(".rejectBtn");
+    document.querySelectorAll(
+        ".rejectBtn"
+    );
 
 rejectButtons.forEach((button) => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        const applicationId =
-            Number(button.dataset.id);
+            const applicationId =
+                Number(
+                    button.dataset.id
+                );
 
-        showLoading("Procesando solicitud...");
-        rejectApplication(
-            applicationId
-        );
+            showLoading(
+                "Procesando solicitud..."
+            );
 
-        deleteApplication(
-            applicationId
-        );
+            rejectApplication(
+                applicationId
+            );
 
-        closeLoading();
-        showSuccess(
-            "Solicitud rechazada"
-        ).then(() => {
-            location.reload();
-        });
+            deleteApplication(
+                applicationId
+            );
 
-    });
+            closeLoading();
+
+            showSuccess(
+                "Solicitud rechazada"
+            ).then(() => {
+
+                location.reload();
+
+            });
+
+        }
+    );
 
 });
