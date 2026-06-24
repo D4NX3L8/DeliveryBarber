@@ -2,6 +2,11 @@ import {
     getCurrentUser,
     logoutUser
 } from "../../../src/controllers/user-controller.js";
+import {
+    showLoading,
+    closeLoading,
+    showSuccess,
+} from "../../../src/utils/alerts.js";
 
 const navbar = document.getElementById("navbar");
 

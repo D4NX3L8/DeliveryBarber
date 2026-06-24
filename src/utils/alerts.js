@@ -1,7 +1,7 @@
 //Alerta de éxito
 export function showSuccess(message) {
 
-    Swal.fire({
+    return Swal.fire({
         position: "top-end",
         icon: "success",
         title: message,
@@ -14,7 +14,7 @@ export function showSuccess(message) {
 //Alerta de error
 export function showError(message) {
 
-    Swal.fire({
+    return Swal.fire({
         icon: "error",
         title: "Error",
         text: message,
@@ -26,7 +26,7 @@ export function showError(message) {
 //Alerta de advertencia
 export function showWarning(message) {
 
-    Swal.fire({
+    return Swal.fire({
         icon: "warning",
         title: "Advertencia",
         text: message,

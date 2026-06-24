@@ -5,6 +5,11 @@ import {
 import {
     createApplication
 } from "../../../src/controllers/application-controller.js";
+import {
+    showLoading,
+    closeLoading,
+    showSuccess,
+} from "../../../src/utils/alerts.js";
 import { showSuccess } from "../../../src/utils/alerts.js";
 
 const form =
@@ -17,6 +22,8 @@ form.addEventListener(
     (event) => {
 
         event.preventDefault();
+
+        showLoading("Enviando solicitud...");
 
         const user =
             getCurrentUser();
@@ -33,6 +40,7 @@ form.addEventListener(
             experience
         );
 
+        closeLoading();
         showSuccess(
             "Solicitud enviada correctamente"
         );

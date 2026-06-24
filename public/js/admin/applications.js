@@ -76,6 +76,7 @@ approveButtons.forEach((button) => {
         const userId =
             Number(button.dataset.userid);
 
+        showLoading("Procesando solicitud...");
         approveApplication(
             applicationId
         );
@@ -89,11 +90,12 @@ approveButtons.forEach((button) => {
             applicationId
         );
 
+        closeLoading();
         showSuccess(
             "Solicitud aprobada"
-        );
-
-        location.reload();
+        ).then(() => {
+            location.reload();
+        });
 
     });
 
@@ -109,6 +111,7 @@ rejectButtons.forEach((button) => {
         const applicationId =
             Number(button.dataset.id);
 
+        showLoading("Procesando solicitud...");
         rejectApplication(
             applicationId
         );
@@ -117,11 +120,12 @@ rejectButtons.forEach((button) => {
             applicationId
         );
 
+        closeLoading();
         showSuccess(
             "Solicitud rechazada"
-        );
-
-        location.reload();
+        ).then(() => {
+            location.reload();
+        });
 
     });
 

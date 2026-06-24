@@ -11,6 +11,8 @@ appointmentForm.addEventListener(
 
         event.preventDefault();
 
+        showLoading("Creando cita...");
+
         const user =
             getCurrentUser();
 
@@ -40,6 +42,7 @@ appointmentForm.addEventListener(
             address
         );
 
+        closeLoading();
         showSuccess("Cita creada correctamente");
 
         appointmentForm.reset();

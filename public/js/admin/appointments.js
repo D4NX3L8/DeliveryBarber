@@ -2,6 +2,11 @@ import {
     getAppointments,
     deleteAppointment
 } from "../../../src/controllers/appointment-controller.js";
+import {
+    showLoading,
+    closeLoading,
+    showSuccess,
+} from "../../../src/utils/alerts.js";
 
 const appointmentsContainer =
     document.getElementById(
@@ -80,9 +85,12 @@ deleteButtons.forEach((button) => {
         const id =
             Number(button.dataset.id);
 
+        showLoading("Eliminando cita...");
         deleteAppointment(id);
-
-        location.reload();
+        closeLoading();
+        showSuccess("Cita eliminada").then(() => {
+            location.reload();
+        });
 
     });
 

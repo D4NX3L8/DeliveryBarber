@@ -8,6 +8,11 @@ import {
 import {
     getCurrentUser
 } from "../../../src/controllers/user-controller.js";
+import {
+    showLoading,
+    closeLoading,
+    showSuccess,
+} from "../../../src/utils/alerts.js";
 
 const user = getCurrentUser();
 
@@ -108,9 +113,12 @@ acceptButtons.forEach((button) => {
         const id =
             Number(button.dataset.id);
 
+        showLoading("Actualizando cita...");
         acceptAppointment(id);
-
-        location.reload();
+        closeLoading();
+        showSuccess("Cita aceptada").then(() => {
+            location.reload();
+        });
 
     });
 
@@ -126,9 +134,12 @@ rejectButtons.forEach((button) => {
         const id =
             Number(button.dataset.id);
 
+        showLoading("Actualizando cita...");
         rejectAppointment(id);
-
-        location.reload();
+        closeLoading();
+        showSuccess("Cita rechazada").then(() => {
+            location.reload();
+        });
 
     });
 
@@ -144,9 +155,12 @@ completeButtons.forEach((button) => {
         const id =
             Number(button.dataset.id);
 
+        showLoading("Actualizando cita...");
         completeAppointment(id);
-
-        location.reload();
+        closeLoading();
+        showSuccess("Cita completada").then(() => {
+            location.reload();
+        });
 
     });
 

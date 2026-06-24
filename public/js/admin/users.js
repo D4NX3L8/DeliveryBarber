@@ -1,4 +1,9 @@
 import { getUsers, deleteUser } from "../../../src/controllers/user-controller.js";
+import {
+    showLoading,
+    closeLoading,
+    showSuccess,
+} from "../../../src/utils/alerts.js";
 
 const usersContainer =
     document.getElementById("usersContainer");
@@ -47,9 +52,12 @@ deleteButtons.forEach((button) => {
         const id =
             Number(button.dataset.id);
 
+        showLoading("Eliminando usuario...");
         deleteUser(id);
-
-        location.reload();
+        closeLoading();
+        showSuccess("Usuario eliminado").then(() => {
+            location.reload();
+        });
 
     });
 
