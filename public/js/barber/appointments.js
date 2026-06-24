@@ -1,42 +1,35 @@
 import {
-    getBarberAppointments,
-    acceptAppointment,
-    rejectAppointment,
-    completeAppointment
+  getBarberAppointments,
+  acceptAppointment,
+  rejectAppointment,
+  completeAppointment
 } from "../../../src/controllers/appointment-controller.js";
 
+import { getCurrentUser } from "../../../src/controllers/user-controller.js";
 import {
-    getCurrentUser
-} from "../../../src/controllers/user-controller.js";
-import {
-    showLoading,
-    closeLoading,
-    showSuccess,
+  showLoading,
+  closeLoading,
+  showSuccess,
+  showError
 } from "../../../src/utils/alerts.js";
 
 const user = getCurrentUser();
 
-const appointmentsContainer =
-    document.getElementById("appointmentsContainer");
+const appointmentsContainer = document.getElementById("appointmentsContainer");
 
-const appointments =
-    getBarberAppointments(user.id);
+const appointments = getBarberAppointments(user.id);
 
 if (appointments.length === 0) {
-
-    appointmentsContainer.innerHTML = `
+  appointmentsContainer.innerHTML = `
         <p>No tienes citas asignadas.</p>
     `;
-
 }
 
 appointments.forEach((appointment) => {
+  let actions = "";
 
-    let actions = "";
-
-    if (appointment.status === "pending") {
-
-        actions = `
+  if (appointment.status === "pending") {
+    actions = `
             <button
                 class="acceptBtn"
                 data-id="${appointment.id}">
@@ -49,22 +42,19 @@ appointments.forEach((appointment) => {
                 Rechazar
             </button>
         `;
+  }
 
-    }
-
-    if (appointment.status === "accepted") {
-
-        actions = `
+  if (appointment.status === "accepted") {
+    actions = `
             <button
                 class="completeBtn"
                 data-id="${appointment.id}">
                 Completar
             </button>
         `;
+  }
 
-    }
-
-    appointmentsContainer.innerHTML += `
+  appointmentsContainer.innerHTML += `
 
         <div>
 
@@ -100,68 +90,58 @@ appointments.forEach((appointment) => {
         </div>
 
     `;
-
 });
 
-const acceptButtons =
-    document.querySelectorAll(".acceptBtn");
+const acceptButtons = document.querySelectorAll(".acceptBtn");
 
 acceptButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const id = Number(button.dataset.id);
 
-    button.addEventListener("click", () => {
+    showLoading("Actualizando cita...");
 
-        const id =
-            Number(button.dataset.id);
+    const accepted = acceptAppointment(id);
 
-        showLoading("Actualizando cita...");
-        acceptAppointment(id);
-        closeLoading();
-        showSuccess("Cita aceptada").then(() => {
-            location.reload();
-        });
+    closeLoading();
 
+    if (!accepted) {
+      showError("Ya tienes una cita aceptada para esa fecha y hora.");
+
+      return;
+    }
+
+    showSuccess("Cita aceptada").then(() => {
+      location.reload();
     });
-
+  });
 });
 
-const rejectButtons =
-    document.querySelectorAll(".rejectBtn");
+const rejectButtons = document.querySelectorAll(".rejectBtn");
 
 rejectButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const id = Number(button.dataset.id);
 
-    button.addEventListener("click", () => {
-
-        const id =
-            Number(button.dataset.id);
-
-        showLoading("Actualizando cita...");
-        rejectAppointment(id);
-        closeLoading();
-        showSuccess("Cita rechazada").then(() => {
-            location.reload();
-        });
-
+    showLoading("Actualizando cita...");
+    rejectAppointment(id);
+    closeLoading();
+    showSuccess("Cita rechazada").then(() => {
+      location.reload();
     });
-
+  });
 });
 
-const completeButtons =
-    document.querySelectorAll(".completeBtn");
+const completeButtons = document.querySelectorAll(".completeBtn");
 
 completeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const id = Number(button.dataset.id);
 
-    button.addEventListener("click", () => {
-
-        const id =
-            Number(button.dataset.id);
-
-        showLoading("Actualizando cita...");
-        completeAppointment(id);
-        closeLoading();
-        showSuccess("Cita completada").then(() => {
-            location.reload();
-        });
-
+    showLoading("Actualizando cita...");
+    completeAppointment(id);
+    closeLoading();
+    showSuccess("Cita completada").then(() => {
+      location.reload();
     });
-
+  });
 });

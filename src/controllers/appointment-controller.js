@@ -70,19 +70,43 @@ export function cancelAppointment(id) {
 //Aceptar cita
 export function acceptAppointment(id) {
 
-    const appointments = getData("appointments");
+    const appointments =
+        getData("appointments");
 
-    const appointment = appointments.find(
-        appointment => appointment.id === id
-    );
+    const appointment =
+        appointments.find(
+            appointment =>
+                appointment.id === id
+        );
 
     if (!appointment) {
-        return;
+        return false;
     }
 
-    appointment.status = "accepted";
+    const conflict =
+        appointments.some(
+            item =>
+                item.id !== appointment.id &&
+                item.barberId === appointment.barberId &&
+                item.date === appointment.date &&
+                item.time === appointment.time &&
+                item.status === "accepted"
+        );
 
-    saveData("appointments", appointments);
+    if (conflict) {
+        return false;
+    }
+
+    appointment.status =
+        "accepted";
+
+    saveData(
+        "appointments",
+        appointments
+    );
+
+    return true;
+
 }
 
 //Rechazar cita
@@ -152,3 +176,4 @@ export function deleteAppointment(id) {
     );
 
 }
+
