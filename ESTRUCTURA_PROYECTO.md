@@ -87,7 +87,6 @@ DeliveryBarber/
     ├── controllers/
     │   ├── application-controller.js
     │   ├── appointment-controller.js
-    │   ├── barber-controller.js
     │   ├── product-controller.js
     │   ├── service-controller.js
     │   └── user-controller.js
@@ -101,21 +100,12 @@ DeliveryBarber/
     ├── models/
     │   ├── application-model.js
     │   ├── appointment-model.js
-    │   ├── barber-model.js
     │   ├── product-model.js
     │   ├── service-model.js
     │   └── user-model.js
     │
-    ├── routes/
-    │   ├── admin-routes.js
-    │   ├── auth-routes.js
-    │   ├── barber-routes.js
-    │   ├── client-routes.js
-    │   └── public-routes.js
-    │
     ├── utils/
     │   ├── alerts.js
-    │   ├── generators.js
     │   ├── localstorage.js
     │   ├── main.js
     │   └── validators.js

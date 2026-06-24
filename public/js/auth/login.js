@@ -2,6 +2,7 @@ import {
   loginUser,
   redirectByRole,
 } from "../../../src/controllers/user-controller.js";
+import { showError } from "../../../src/utils/alerts.js";
 
 const loginForm = document.getElementById("loginForm");
 
@@ -15,7 +16,7 @@ loginForm.addEventListener("submit", (event) => {
   const user = loginUser(email, password);
 
   if (!user) {
-    alert("Correo o contraseña incorrectos");
+    showError("Correo o contraseña incorrectos");
 
     return;
   }

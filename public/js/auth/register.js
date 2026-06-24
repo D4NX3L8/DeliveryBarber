@@ -4,6 +4,7 @@ import {
   validateEmail,
   validatePassword,
 } from "../../../src/utils/validators.js";
+import { showError, showSuccess } from "../../../src/utils/alerts.js";
 
 const registerForm = document.getElementById("registerForm");
 
@@ -19,33 +20,33 @@ registerForm.addEventListener("submit", (event) => {
   const nameError = validateName(name);
 
   if (nameError) {
-    alert(nameError);
+    showError(nameError);
     return;
   }
 
   const emailError = validateEmail(email);
 
   if (emailError) {
-    alert(emailError);
+    showError(emailError);
     return;
   }
 
   const passwordError = validatePassword(password);
 
   if (passwordError) {
-    alert(passwordError);
+    showError(passwordError);
     return;
   }
 
   const result = registerUser(name, email, password, "client");
 
   if (!result.success) {
-    alert(result.message);
+    showError(result.message);
 
     return;
   }
 
-  alert("Usuario registrado correctamente");
+  showSuccess("Usuario registrado correctamente");
 
   window.location.href = "../../../src/views/auth/login.html";
 });

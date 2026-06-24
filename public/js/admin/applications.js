@@ -6,6 +6,7 @@ import {
 } from "../../../src/controllers/application-controller.js";
 
 import { updateUserRole } from "../../../src/controllers/user-controller.js";
+import { showSuccess } from "../../../src/utils/alerts.js";
 
 const applicationsContainer = document.getElementById("applicationsContainer");
 
@@ -88,7 +89,7 @@ approveButtons.forEach((button) => {
             applicationId
         );
 
-        alert(
+        showSuccess(
             "Solicitud aprobada"
         );
 
@@ -116,7 +117,7 @@ rejectButtons.forEach((button) => {
             applicationId
         );
 
-        alert(
+        showSuccess(
             "Solicitud rechazada"
         );
 

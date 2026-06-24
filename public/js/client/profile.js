@@ -5,6 +5,7 @@ import {
 import {
     createApplication
 } from "../../../src/controllers/application-controller.js";
+import { showSuccess } from "../../../src/utils/alerts.js";
 
 const form =
     document.getElementById(
@@ -32,7 +33,7 @@ form.addEventListener(
             experience
         );
 
-        alert(
+        showSuccess(
             "Solicitud enviada correctamente"
         );
 

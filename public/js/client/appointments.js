@@ -1,6 +1,6 @@
 import { createAppointment } from "../../../src/controllers/appointment-controller.js";
-
 import { getCurrentUser } from "../../../src/controllers/user-controller.js";
+import { showSuccess } from "../../../src/utils/alerts.js";
 
 const appointmentForm =
     document.getElementById("appointmentForm");
@@ -40,7 +40,7 @@ appointmentForm.addEventListener(
             address
         );
 
-        alert("Cita creada correctamente");
+        showSuccess("Cita creada correctamente");
 
         appointmentForm.reset();
 
