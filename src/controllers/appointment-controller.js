@@ -176,4 +176,22 @@ export function deleteAppointment(id) {
     );
 
 }
+//Verifica si hay fechs y horas ocupadas en el agendamiento de citas.
+export function isTimeSlotOccupied(
+    barberId,
+    date,
+    time
+) {
 
+    const appointments =
+        getData("appointments");
+
+    return appointments.some(
+        appointment =>
+            appointment.barberId === barberId &&
+            appointment.date === date &&
+            appointment.time === time &&
+            appointment.status === "accepted"
+    );
+
+}

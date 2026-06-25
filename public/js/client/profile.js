@@ -1,16 +1,10 @@
 import {
-    createAppointment
-} from "../../../src/controllers/appointment-controller.js";
-
-import {
     getCurrentUser
 } from "../../../src/controllers/user-controller.js";
 
 import {
-    validateDate,
-    validateTime,
-    validateAddress
-} from "../../../src/utils/validators.js";
+    createApplication
+} from "../../../src/controllers/application-controller.js";
 
 import {
     showLoading,
@@ -19,12 +13,12 @@ import {
     showError
 } from "../../../src/utils/alerts.js";
 
-const appointmentForm =
+const form =
     document.getElementById(
-        "appointmentForm"
+        "applicationForm"
     );
 
-appointmentForm.addEventListener(
+form.addEventListener(
     "submit",
     (event) => {
 
@@ -33,59 +27,15 @@ appointmentForm.addEventListener(
         const user =
             getCurrentUser();
 
-        const service =
+        const experience =
             document.getElementById(
-                "service"
+                "experience"
             ).value;
 
-        const date =
-            document.getElementById(
-                "date"
-            ).value;
-
-        const time =
-            document.getElementById(
-                "time"
-            ).value;
-
-        const address =
-            document.getElementById(
-                "address"
-            ).value;
-
-        const dateError =
-            validateDate(date);
-
-        if (dateError) {
+        if (!experience.trim()) {
 
             showError(
-                dateError
-            );
-
-            return;
-
-        }
-
-        const timeError =
-            validateTime(time);
-
-        if (timeError) {
-
-            showError(
-                timeError
-            );
-
-            return;
-
-        }
-
-        const addressError =
-            validateAddress(address);
-
-        if (addressError) {
-
-            showError(
-                addressError
+                "Debes ingresar tu experiencia."
             );
 
             return;
@@ -93,32 +43,23 @@ appointmentForm.addEventListener(
         }
 
         showLoading(
-            "Creando cita..."
+            "Enviando solicitud..."
         );
 
-        const barberId = 1;
-
-        const barberName =
-            "Barbero Demo";
-
-        createAppointment(
+        createApplication(
             user.id,
             user.name,
-            barberId,
-            barberName,
-            service,
-            date,
-            time,
-            address
+            user.email,
+            experience
         );
 
         closeLoading();
 
         showSuccess(
-            "Cita creada correctamente"
+            "Solicitud enviada correctamente"
         );
 
-        appointmentForm.reset();
+        form.reset();
 
     }
 );

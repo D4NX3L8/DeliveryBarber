@@ -1,124 +1,115 @@
 import {
-    createAppointment
+  createAppointment,
+  isTimeSlotOccupied,
 } from "../../../src/controllers/appointment-controller.js";
 
-import {
-    getCurrentUser
-} from "../../../src/controllers/user-controller.js";
+import { getUsers, getCurrentUser } from "../../../src/controllers/user-controller.js";
 
 import {
-    validateDate,
-    validateTime,
-    validateAddress
+  validateDate,
+  validateTime,
+  validateAddress,
 } from "../../../src/utils/validators.js";
 
 import {
-    showLoading,
-    closeLoading,
-    showSuccess,
-    showError
+  showLoading,
+  closeLoading,
+  showSuccess,
+  showError,
 } from "../../../src/utils/alerts.js";
 
-const appointmentForm =
-    document.getElementById(
-        "appointmentForm"
-    );
+const appointmentForm = document.getElementById("appointmentForm");
 
-appointmentForm.addEventListener(
-    "submit",
-    (event) => {
+const barberSelect = document.getElementById("barber");
 
-        event.preventDefault();
+const barbers = getUsers().filter((user) => user.role === "barber");
 
-        const user =
-            getCurrentUser();
+if (barbers.length === 0) {
+  barberSelect.innerHTML = `
+        <option value="">
+            No hay barberos disponibles
+        </option>
+    `;
+} else {
+  barbers.forEach((barber) => {
+    barberSelect.innerHTML += `
+                <option
+                    value="${barber.id}">
+                    ${barber.name}
+                </option>
+            `;
+  });
+}
 
-        const service =
-            document.getElementById(
-                "service"
-            ).value;
+appointmentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-        const date =
-            document.getElementById(
-                "date"
-            ).value;
+  const user = getCurrentUser();
 
-        const time =
-            document.getElementById(
-                "time"
-            ).value;
+  const service = document.getElementById("service").value;
 
-        const address =
-            document.getElementById(
-                "address"
-            ).value;
+  const date = document.getElementById("date").value;
 
-        const dateError =
-            validateDate(date);
+  const time = document.getElementById("time").value;
 
-        if (dateError) {
+  const address = document.getElementById("address").value;
 
-            showError(
-                dateError
-            );
+  const dateError = validateDate(date);
 
-            return;
+  if (dateError) {
+    showError(dateError);
 
-        }
+    return;
+  }
 
-        const timeError =
-            validateTime(time);
+  const timeError = validateTime(time);
 
-        if (timeError) {
+  if (timeError) {
+    showError(timeError);
 
-            showError(
-                timeError
-            );
+    return;
+  }
 
-            return;
+  const addressError = validateAddress(address);
 
-        }
+  if (addressError) {
+    showError(addressError);
 
-        const addressError =
-            validateAddress(address);
+    return;
+  }
 
-        if (addressError) {
+  showLoading("Creando cita...");
 
-            showError(
-                addressError
-            );
+  const barberId = Number(barberSelect.value);
 
-            return;
+  const selectedBarber = barbers.find((barber) => barber.id === barberId);
 
-        }
+  const barberName = selectedBarber.name;
 
-        showLoading(
-            "Creando cita..."
-        );
+  const occupied = isTimeSlotOccupied(barberId, date, time);
 
-        const barberId = 1;
+  if (occupied) {
+    closeLoading();
 
-        const barberName =
-            "Barbero Demo";
+    showError("Ese horario ya se encuentra ocupado.");
 
-        createAppointment(
-            user.id,
-            user.name,
-            barberId,
-            barberName,
-            service,
-            date,
-            time,
-            address
-        );
+    return;
+  }
 
-        closeLoading();
+  createAppointment(
+    user.id,
+    user.name,
+    barberId,
+    barberName,
+    service,
+    date,
+    time,
+    address,
+  );
 
-        showSuccess(
-            "Cita creada correctamente"
-        );
+  closeLoading();
 
-        appointmentForm.reset();
+  showSuccess("Cita creada correctamente");
 
-    }
-);
+  appointmentForm.reset();
+});
