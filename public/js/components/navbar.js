@@ -222,6 +222,12 @@ else if (user.role === "admin") {
                     </li>
 
                     <li>
+                        <a href="../admin/purchases.html">
+                            Compras
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="../admin/applications.html">
                             Solicitudes
                         </a>
