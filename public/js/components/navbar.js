@@ -298,11 +298,6 @@ else if (user.role === "barber") {
                         </a>
                     </li>
 
-                    <li>
-                        <a href="../barber/reviews.html">
-                            Reseñas
-                        </a>
-                    </li>
 
                 </ul>
 
