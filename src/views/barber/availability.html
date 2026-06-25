@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+
+    <title>Disponibilidad</title>
+  </head>
+
+  <body>
+    <header id="navbar"></header>
+
+    <main>
+      <h1>Mi Disponibilidad</h1>
+
+      <h2>Horario Laboral</h2>
+
+      <form id="scheduleForm">
+        <label for="startTime"> Hora inicio </label>
+
+        <input type="time" id="startTime" required />
+
+        <label for="endTime"> Hora fin </label>
+
+        <input type="time" id="endTime" required />
+
+        <button type="submit">Guardar horario</button>
+      </form>
+
+      <hr />
+
+      <h2>Días de descanso</h2>
+
+      <form id="dayOffForm">
+        <input type="date" id="dayOffDate" required />
+
+        <button type="submit">Agregar día libre</button>
+      </form>
+
+      <hr />
+
+      <div id="daysOffContainer"></div>
+    </main>
+
+    <script
+      type="module"
+      src="../../../public/js/components/navbar.js"
+    ></script>
+
+    <script
+      type="module"
+      src="../../../public/js/barber/availability.js"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
