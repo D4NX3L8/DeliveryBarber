@@ -1,4 +1,4 @@
-import { getUserPurchases } from "../../../src/controllers/purchase-controller.js";
+import { getPurchases } from "../../../src/models/purchase-model.js";
 
 import { getCurrentUser } from "../../../src/controllers/user-controller.js";
 
@@ -6,7 +6,7 @@ const container = document.getElementById("historyContainer");
 
 const user = getCurrentUser();
 
-const purchases = getUserPurchases(user.id);
+const purchases = user ? getPurchases().filter((purchase) => purchase.userId === user.id) : [];
 
 if (purchases.length === 0) {
   container.innerHTML = `
