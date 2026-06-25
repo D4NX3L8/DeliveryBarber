@@ -1,0 +1,18 @@
+
+.cart-panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+#cartContainer {
+  display: grid;
+  gap: 1rem;
+}
+
+#checkoutBtn {
+  align-self: flex-start;
+  background: var(--color-acento);
+  color: var(--color-principal);
+  border-radius: 999px;
+  padding: 1rem 1.5rem;
+}

@@ -1,0 +1,16 @@
+
+.products-list > div {
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.products-list > div h3 {
+  font-size: 1.4rem;
+}
+
+.products-list > div p {
+  margin: 0;
+}
+
+.products-list > div hr {
+  border-color: rgba(255,255,255,.08);
+}

@@ -1,0 +1,9 @@
+
+.history-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.history-card {
+  padding: 1.75rem;
+}

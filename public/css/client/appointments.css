@@ -1,0 +1,16 @@
+
+.appointment-form {
+  max-width: 620px;
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+#appointmentHistory {
+  margin-top: 2rem;
+}
+
+#appointmentHistoryContainer {
+  display: grid;
+  gap: 1rem;
+}

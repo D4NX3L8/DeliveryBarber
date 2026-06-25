@@ -1,0 +1,38 @@
+
+.auth-page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.auth-card {
+  width: min(480px, 100%);
+  margin: 0 auto;
+  padding: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.auth-card h1 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.auth-card form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+.auth-actions a {
+  color: var(--color-acento);
+  text-decoration: underline;
+}

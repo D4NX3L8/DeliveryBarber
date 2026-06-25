@@ -1,0 +1,17 @@
+
+.barber-appointments {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.barber-appointments label,
+.barber-appointments select {
+  display: block;
+  width: 100%;
+}
+
+#appointmentsContainer {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}

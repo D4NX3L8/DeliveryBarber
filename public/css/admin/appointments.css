@@ -1,0 +1,9 @@
+
+.appointments-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.appointment-card {
+  padding: 1.75rem;
+}

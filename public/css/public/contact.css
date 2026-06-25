@@ -1,0 +1,23 @@
+
+.contact-info .card,
+.about-company .card,
+.work-with-us .card {
+  background: rgba(255,255,255,.04);
+}
+
+.contact-info .grid-3,
+.about-company .grid-2,
+.work-with-us .grid-2 {
+  gap: 1.5rem;
+}
+
+.form-input,
+.form-textarea {
+  color: var(--color-texto-claro);
+}
+
+button.btn-primary,
+button[type="submit"] {
+  width: fit-content;
+  min-width: 220px;
+}

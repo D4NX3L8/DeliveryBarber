@@ -1,68 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
-    />
-
-    <title>Disponibilidad</title>
+    <title>Disponibilidad | DeliveryBarber</title>
+    <link rel="stylesheet" href="/public/css/global.css" />
+    <link rel="stylesheet" href="/public/css/navbar.css" />
+    <link rel="stylesheet" href="/public/css/footer.css" />
+    <link rel="stylesheet" href="/public/css/barber/availability.css" />
     <!-- Esto es para las alertas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
-</head>
-
+  </head>
   <body>
     <header id="navbar"></header>
-
-    <main>
-      <h1>Mi Disponibilidad</h1>
-
-      <h2>Calendario de disponibilidad</h2>
-
-      <div id="availabilityCalendar"></div>
-
-      <h2>Horario Laboral</h2>
-
-      <form id="scheduleForm">
-        <label for="startTime"> Hora inicio </label>
-
-        <input type="time" id="startTime" required />
-
-        <label for="endTime"> Hora fin </label>
-
-        <input type="time" id="endTime" required />
-
-        <button type="submit">Guardar horario</button>
-      </form>
-
-      <hr />
-
-      <h2>Días de descanso</h2>
-
-      <form id="dayOffForm">
-        <input type="date" id="dayOffDate" required />
-
-        <button type="submit">Agregar día libre</button>
-      </form>
-
-      <hr />
-
-      <div id="daysOffContainer"></div>
+    <main class="section availability-grid">
+      <div class="container">
+        <div class="flex-between" style="align-items:flex-end; gap:1rem; flex-wrap:wrap; margin-bottom:1.75rem;">
+          <div>
+            <p class="page-note">Actualiza tu horario</p>
+            <h1 class="page-title">Mi Disponibilidad</h1>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Calendario de disponibilidad</h2>
+          <div id="availabilityCalendar" style="margin-top:1rem;"></div>
+        </div>
+        <form id="scheduleForm" class="card">
+          <h2>Horario Laboral</h2>
+          <div class="form-group">
+            <label for="startTime">Hora inicio</label>
+            <input type="time" id="startTime" required />
+          </div>
+          <div class="form-group">
+            <label for="endTime">Hora fin</label>
+            <input type="time" id="endTime" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar horario</button>
+        </form>
+        <div class="card">
+          <h2>Días de descanso</h2>
+          <form id="dayOffForm" class="form-group">
+            <input type="date" id="dayOffDate" required />
+            <button type="submit" class="btn btn-primary">Agregar día libre</button>
+          </form>
+        </div>
+        <div id="daysOffContainer"></div>
+      </div>
     </main>
-
-    <script
-      type="module"
-      src="../../../public/js/components/navbar.js"
-    ></script>
-
-    <script
-      type="module"
-      src="../../../public/js/barber/availability.js"
-    ></script>
-
+    <footer id="footer"></footer>
+    <script type="module" src="../../../public/js/components/navbar.js"></script>
+    <script type="module" src="../../../public/js/components/footer.js"></script>
+    <script type="module" src="../../../public/js/barber/availability.js"></script>
     <!-- Esto es para las alertas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
+  </body>
 </html>

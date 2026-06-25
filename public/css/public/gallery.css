@@ -1,0 +1,16 @@
+
+.gallery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gallery-image {
+  background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.22));
+}
+
+.haircuts .card {
+  grid-template-columns: 1fr;
+}
+
+.haircuts .card h3 {
+  margin-bottom: .8rem;
+}

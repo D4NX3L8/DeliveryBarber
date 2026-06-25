@@ -1,108 +1,68 @@
-/* =========================
-   FOOTER
-========================= */
+
+footer {
+  background: var(--fondo-seccion);
+  color: var(--color-texto-claro);
+  border-top: 1px solid var(--color-borde);
+}
 
 .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 3rem;
-
-    padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 3rem 2rem;
 }
 
 .footer-brand,
 .footer-links,
 .footer-contact,
 .footer-team {
-    flex: 1;
+  flex: 1 1 220px;
 }
-
-/* =========================
-   TITULOS
-========================= */
 
 .footer-brand h3,
 .footer-links h4,
 .footer-contact h4,
 .footer-team h4 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
+  color: var(--color-texto-claro);
 }
-
-/* =========================
-   TEXTOS
-========================= */
 
 .footer-brand p,
 .footer-contact p,
-.footer-team p {
-    line-height: 1.6;
+.footer-team p,
+.footer-links a {
+  color: var(--color-texto-oscuro);
+  line-height: 1.8;
 }
 
-/* =========================
-   ENLACES
-========================= */
-
 .footer-links ul {
-    list-style: none;
+  list-style: none;
 }
 
 .footer-links li {
-    margin-bottom: .7rem;
+  margin-bottom: .7rem;
 }
 
 .footer-links a {
-    text-decoration: none;
+  color: var(--color-texto-oscuro);
 }
 
-/* =========================
-   FOOTER INFERIOR
-========================= */
+.footer-links a:hover {
+  color: var(--color-texto-claro);
+}
 
 .footer-bottom {
-    text-align: center;
-    padding: 1rem;
+  text-align: center;
+  padding: 1.25rem 0 2rem;
+  color: var(--color-texto-oscuro);
 }
-
-/* =========================
-   RESPONSIVE TABLET
-========================= */
 
 @media (max-width: 768px) {
-
-    .footer-container {
-        flex-wrap: wrap;
-        gap: 2rem;
-    }
-
-    .footer-brand,
-    .footer-links,
-    .footer-contact,
-    .footer-team {
-        flex: 1 1 45%;
-    }
-
-}
-
-/* =========================
-   RESPONSIVE MOBILE
-========================= */
-
-@media (max-width: 576px) {
-
-    .footer-container {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .footer-brand,
-    .footer-links,
-    .footer-contact,
-    .footer-team {
-        width: 100%;
-    }
-
+  .footer-container {
+    gap: 1.5rem;
+  }
 }

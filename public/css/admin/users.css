@@ -1,0 +1,9 @@
+
+.users-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.user-card {
+  padding: 1.75rem;
+}

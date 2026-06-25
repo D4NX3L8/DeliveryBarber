@@ -1,0 +1,12 @@
+
+.product-form {
+  display: grid;
+  gap: 1rem;
+  max-width: 580px;
+}
+
+#productsContainer {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}

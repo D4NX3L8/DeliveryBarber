@@ -1,48 +1,57 @@
 <!doctype html>
 <html lang="en">
   <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="/public/css/global.css">
-    <link rel="stylesheet" href="/public/css/navbar.css">
-    <link rel="stylesheet" href="/public/css/footer.css">
-    <link rel="stylesheet" href="/public/css/public/contact.css">
+    <link rel="stylesheet" href="/public/css/global.css" />
+    <link rel="stylesheet" href="/public/css/navbar.css" />
+    <link rel="stylesheet" href="/public/css/footer.css" />
+    <link rel="stylesheet" href="/public/css/public/home.css" />
     <!-- Esto es para las alertas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
-</head>
+  </head>
+
   <body>
     <header id="navbar"></header>
+
     <main>
       <!-- hero -->
       <section class="hero">
         <div class="container">
-          <div class="hero-content">
-            <h1>Barbería profesional hasta la puerta de tu casa</h1>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1>Barbería profesional hasta la puerta de tu casa</h1>
+              <p>
+                Agenda tu cita con los mejores barberos de tu ciudad y recibe un
+                servicio de calidad sin salir de casa.
+              </p>
 
-            <p>
-              Agenda tu cita con los mejores barberos de tu ciudad y recibe un
-              servicio de calidad sin salir de casa.
-            </p>
+              <div class="hero-buttons">
+                <a href="../auth/login.html" class="btn btn-primary">
+                  Regístrate
+                </a>
+                <a href="services.html" class="btn btn-secondary">
+                  Ver servicios
+                </a>
+                <a href="contact.html" class="btn btn-secondary">
+                  Trabaja con nosotros
+                </a>
+              </div>
+            </div>
 
-            <div class="hero-buttons">
-              <a href="../auth/login.html" class="btn btn-primary">
-                Registrate
-              </a>
-
-              <a href="services.html" class="btn btn-secondary">
-                Ver Servicios
-              </a>
-
-              <a href="contact.html" class="btn btn-secondary">
-                Trabaja con nosotros
-              </a>
-
+            <div class="hero-media">
+              <div class="hero-image-card">
+                <img src="/public/images/corte1.png" alt="Corte de cabello 1" />
+                <img src="/public/images/corte2.png" alt="Corte de cabello 2" />
+                <img src="/public/images/corte3.png" alt="Corte de cabello 3" />
+                <img src="/public/images/corte4.png" alt="Corte de cabello 4" />
+              </div>
             </div>
           </div>
         </div>
       </section>
+
       <!-- estadisticas -->
       <section class="statistics">
         <div class="container">
@@ -118,8 +127,10 @@
             </article>
           </div>
         </div>
-        <!-- cta -->
-        <section class="cta"></section>
+      </section>
+
+      <!-- cta -->
+      <section class="cta">
         <div class="container">
           <h2>¿Listo para tu próximo cambio de look?</h2>
 
@@ -135,17 +146,9 @@
     <!-- Footer -->
     <footer id="footer"></footer>
 
-    <script
-      type="module"
-      src="../../../public/js/components/footer.js"
-    ></script>
-
-    <!-- Este Scrpit genera automaticamente el navbar según el perifl -->
-    <script
-      type="module"
-      src="../../../public/js/components/navbar.js"
-    ></script>
+    <script type="module" src="../../../public/js/components/footer.js"></script>
+    <script type="module" src="../../../public/js/components/navbar.js"></script>
     <!-- Esto es para las alertas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
+  </body>
 </html>

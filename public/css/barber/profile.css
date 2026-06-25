@@ -1,0 +1,11 @@
+
+.profile-card {
+  max-width: 720px;
+  display: grid;
+  gap: 1.25rem;
+  padding: 2rem;
+}
+
+.profile-card textarea {
+  min-height: 160px;
+}
