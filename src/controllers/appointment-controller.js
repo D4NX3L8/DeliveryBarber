@@ -1,8 +1,22 @@
 import Appointment from "../models/appointment-model.js";
 import { getData, saveData } from "../utils/localstorage.js";
+import { getAvailability, getDayOffs } from "./availability-controller.js";
 
 //Crear cita
 export function createAppointment(
+  clientId,
+  clientName,
+  barberId,
+  barberName,
+  service,
+  date,
+  time,
+  address,
+) {
+  const appointments = getData("appointments");
+
+  const appointment = new Appointment(
+    Date.now(),
     clientId,
     clientName,
     barberId,
@@ -10,188 +24,178 @@ export function createAppointment(
     service,
     date,
     time,
-    address
-) {
+    address,
+  );
 
-    const appointments = getData("appointments");
+  appointments.push(appointment);
 
-    const appointment = new Appointment(
-        Date.now(),
-        clientId,
-        clientName,
-        barberId,
-        barberName,
-        service,
-        date,
-        time,
-        address
-    );
+  saveData("appointments", appointments);
 
-    appointments.push(appointment);
-
-    saveData("appointments", appointments);
-
-    return appointment;
+  return appointment;
 }
 
 //Obtener todas las citas
 export function getAppointments() {
-    return getData("appointments");
+  return getData("appointments");
 }
 
 //Obtener citas de un cliente
 export function getClientAppointments(clientId) {
+  const appointments = getData("appointments");
 
-    const appointments = getData("appointments");
-
-    return appointments.filter(
-        appointment => appointment.clientId === clientId
-    );
+  return appointments.filter(
+    (appointment) => appointment.clientId === clientId,
+  );
 }
 
 //Cancelar cita
 export function cancelAppointment(id) {
+  const appointments = getData("appointments");
 
-    const appointments = getData("appointments");
+  const appointment = appointments.find((appointment) => appointment.id === id);
 
-    const appointment = appointments.find(
-        appointment => appointment.id === id
-    );
+  if (!appointment) {
+    return;
+  }
 
-    if (!appointment) {
-        return;
-    }
+  appointment.status = "cancelled";
 
-    appointment.status = "cancelled";
-
-    saveData("appointments", appointments);
+  saveData("appointments", appointments);
 }
 
 //Aceptar cita
 export function acceptAppointment(id) {
+  const appointments = getData("appointments");
 
-    const appointments =
-        getData("appointments");
+  const appointment = appointments.find((appointment) => appointment.id === id);
 
-    const appointment =
-        appointments.find(
-            appointment =>
-                appointment.id === id
-        );
+  if (!appointment) {
+    return false;
+  }
 
-    if (!appointment) {
-        return false;
-    }
+  const conflict = appointments.some(
+    (item) =>
+      item.id !== appointment.id &&
+      item.barberId === appointment.barberId &&
+      item.date === appointment.date &&
+      item.time === appointment.time &&
+      item.status === "accepted",
+  );
 
-    const conflict =
-        appointments.some(
-            item =>
-                item.id !== appointment.id &&
-                item.barberId === appointment.barberId &&
-                item.date === appointment.date &&
-                item.time === appointment.time &&
-                item.status === "accepted"
-        );
+  if (conflict) {
+    return false;
+  }
 
-    if (conflict) {
-        return false;
-    }
+  appointment.status = "accepted";
 
-    appointment.status =
-        "accepted";
+  saveData("appointments", appointments);
 
-    saveData(
-        "appointments",
-        appointments
-    );
-
-    return true;
-
+  return true;
 }
 
 //Rechazar cita
 export function rejectAppointment(id) {
+  const appointments = getData("appointments");
 
-    const appointments = getData("appointments");
+  const appointment = appointments.find((appointment) => appointment.id === id);
 
-    const appointment = appointments.find(
-        appointment => appointment.id === id
-    );
+  if (!appointment) {
+    return;
+  }
 
-    if (!appointment) {
-        return;
-    }
+  appointment.status = "rejected";
 
-    appointment.status = "rejected";
-
-    saveData("appointments", appointments);
+  saveData("appointments", appointments);
 }
 
 //Completar cita
 export function completeAppointment(id) {
+  const appointments = getData("appointments");
 
-    const appointments = getData("appointments");
+  const appointment = appointments.find((appointment) => appointment.id === id);
 
-    const appointment = appointments.find(
-        appointment => appointment.id === id
-    );
+  if (!appointment) {
+    return;
+  }
 
-    if (!appointment) {
-        return;
-    }
+  appointment.status = "completed";
 
-    appointment.status = "completed";
-
-    saveData("appointments", appointments);
+  saveData("appointments", appointments);
 }
 
 //Obtiene las citas de un barbero
 export function getBarberAppointments(barberId) {
+  const appointments = getData("appointments");
 
-    const appointments =
-        getData("appointments");
-
-    return appointments.filter(
-        appointment =>
-            appointment.barberId === barberId
-    );
-
+  return appointments.filter(
+    (appointment) => appointment.barberId === barberId,
+  );
 }
 
 //Elimina usuarios.
 export function deleteAppointment(id) {
+  const appointments = getData("appointments");
 
-    const appointments =
-        getData("appointments");
+  const updatedAppointments = appointments.filter(
+    (appointment) => appointment.id !== id,
+  );
 
-    const updatedAppointments =
-        appointments.filter(
-            appointment =>
-                appointment.id !== id
-        );
-
-    saveData(
-        "appointments",
-        updatedAppointments
-    );
-
+  saveData("appointments", updatedAppointments);
 }
 //Verifica si hay fechs y horas ocupadas en el agendamiento de citas.
-export function isTimeSlotOccupied(
+export function isTimeSlotOccupied(barberId, date, time) {
+  const appointments = getData("appointments");
+
+  return appointments.some(
+    (appointment) =>
+      appointment.barberId === barberId &&
+      appointment.date === date &&
+      appointment.time === time &&
+      appointment.status === "accepted",
+  );
+}
+
+//Verifica si la hora está dentro del horario laboral
+export function isWithinWorkingHours(
     barberId,
-    date,
     time
 ) {
 
-    const appointments =
-        getData("appointments");
+    const availability =
+        getAvailability(
+            barberId
+        );
 
-    return appointments.some(
-        appointment =>
-            appointment.barberId === barberId &&
-            appointment.date === date &&
-            appointment.time === time &&
-            appointment.status === "accepted"
+    if (
+        !availability ||
+        !availability.startTime ||
+        !availability.endTime
+    ) {
+        return false;
+    }
+
+    return (
+        time >= availability.startTime &&
+        time <= availability.endTime
+    );
+
+}
+
+
+//Verifica si el barbero tiene día libre
+export function isDayOff(
+    barberId,
+    date
+) {
+
+    const daysOff =
+        getDayOffs(
+            barberId
+        );
+
+    return daysOff.some(
+        day =>
+            day.date === date
     );
 
 }
