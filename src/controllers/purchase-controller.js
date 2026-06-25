@@ -1,18 +1,29 @@
-export function createPurchase(
+import { getPurchases, savePurchases } from "../models/purchase-model.js";
+
+import { getProducts, saveProducts } from "../models/product-model.js";
+
+export function createPurchase(userId, products, total) {
+  const purchases = getPurchases();
+
+  purchases.push({
+    id: crypto.randomUUID(),
     userId,
+    date: new Date().toLocaleDateString(),
     products,
-    total
-) {
+    total,
+  });
 
-    const purchases = getPurchases();
+  savePurchases(purchases);
 
-    purchases.push({
-        id: crypto.randomUUID(),
-        userId,
-        date: new Date().toLocaleDateString(),
-        products,
-        total
-    });
+  const allProducts = getProducts();
 
-    savePurchases(purchases);
+  products.forEach((item) => {
+    const product = allProducts.find((p) => p.id === item.productId);
+
+    if (product) {
+      product.stock = Math.max(0, product.stock - item.quantity);
+    }
+  });
+
+  saveProducts(allProducts);
 }

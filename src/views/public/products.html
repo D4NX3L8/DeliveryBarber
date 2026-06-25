@@ -1,207 +1,29 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.all.min.js"></script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Productos | DeliveryBarber</title>
+    <title>Productos</title>
+    <!-- Esto es para las alertas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+</head>
 
-    <link rel="stylesheet" href="/public/css/global.css" />
-    <link rel="stylesheet" href="/public/css/navbar.css" />
-    <link rel="stylesheet" href="/public/css/footer.css" />
-    <link rel="stylesheet" href="/public/css/public/products.css" />
-  </head>
   <body>
     <header id="navbar"></header>
 
     <main>
-      <!-- HERO -->
-      <section class="page-hero">
-        <div class="container">
-          <h1>Productos de Cuidado Capilar</h1>
+      <h1>Productos</h1>
 
-          <p>
-            Encuentra los mejores productos para mantener tu cabello y barba
-            siempre impecables.
-          </p>
-        </div>
-      </section>
-
-      <!-- PRODUCTOS -->
-      <section class="products-list">
-        <div class="container">
-          <h2 class="section-title">Productos Disponibles</h2>
-
-          <div class="grid grid-4">
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="">
-              </div>
-
-              <h3>Gel de Peinado</h3>
-
-              <p>Fijación fuerte para todo tipo de cabello.</p>
-
-              <span>$25.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="">
-              </div>
-
-              <h3>Cera Capilar</h3>
-
-              <p>Acabado natural y flexible.</p>
-
-              <span>$30.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="" />
-              </div>
-
-              <h3>Champú Profesional</h3>
-
-              <p>Limpieza profunda y cuidado del cabello.</p>
-
-              <span>$35.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="" />
-              </div>
-
-              <h3>Loción Capilar</h3>
-
-              <p>Nutrición y fortalecimiento del cabello.</p>
-
-              <span>$28.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="" />
-              </div>
-
-              <h3>Peinilla Profesional</h3>
-
-              <p>Ideal para peinados precisos.</p>
-
-              <span>$12.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="" />
-              </div>
-
-              <h3>Aceite para Barba</h3>
-
-              <p>Hidrata y da brillo a la barba.</p>
-
-              <span>$22.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="" />
-              </div>
-
-              <h3>Tratamiento Capilar</h3>
-
-              <p>Recupera y fortalece el cabello.</p>
-
-              <span>$45.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-
-            <article class="card product-card">
-              <div class="product-image">
-                <img src="#" alt="" />
-              </div>
-
-              <h3>Kit de Cuidado Personal</h3>
-
-              <p>Todo lo necesario para tu rutina diaria.</p>
-
-              <span>$60.000</span>
-
-              <button class="btn btn-primary">Comprar</button>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- BENEFICIOS -->
-      <section class="benefits">
-        <div class="container">
-          <h2 class="section-title">¿Por qué comprar con nosotros?</h2>
-
-          <div class="grid grid-3">
-            <article class="card">
-              <h3>Calidad</h3>
-
-              <p>Productos seleccionados por profesionales.</p>
-            </article>
-
-            <article class="card">
-              <h3>Variedad</h3>
-
-              <p>Todo lo que necesitas para tu cuidado personal.</p>
-            </article>
-
-            <article class="card">
-              <h3>Comodidad</h3>
-
-              <p>Compra desde cualquier lugar y recibe asesoría.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="cta">
-        <div class="container">
-          <h2>Cuida tu imagen con los mejores productos</h2>
-
-          <p>Regístrate y descubre todo nuestro catálogo.</p>
-
-          <a href="../auth/register.html" class="btn btn-primary">
-            Crear Cuenta
-          </a>
-        </div>
-      </section>
+      <div id="productsContainer"></div>
     </main>
-
-    <footer id="footer"></footer>
 
     <script
       type="module"
       src="../../../public/js/components/navbar.js"
     ></script>
 
-    <script
-      type="module"
-      src="../../../public/js/components/footer.js"
-    ></script>
-  </body>
+    <script type="module" src="../../../public/js/public/products.js"></script>
+    <!-- Esto es para las alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
 </html>
-

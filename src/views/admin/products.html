@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <title>Productos</title>
+    <!-- Esto es para las alertas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+</head>
+
+  <body>
+    <header id="navbar"></header>
+
+    <main>
+      <h1>Gestión de Productos</h1>
+
+      <form id="productForm">
+        <input id="name" type="text" placeholder="Nombre" required />
+
+        <input id="price" type="number" placeholder="Precio" required />
+
+        <input id="stock" type="number" placeholder="Stock" required />
+
+        <input id="image" type="text" placeholder="URL de la imagen" required />
+
+        <button type="submit">Guardar</button>
+      </form>
+
+      <div id="productsContainer"></div>
+    </main>
+
+    <script
+      type="module"
+      src="../../../public/js/components/navbar.js"
+    ></script>
+
+    <script type="module" src="../../../public/js/admin/products.js"></script>
+
+    <!-- Esto es para las alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

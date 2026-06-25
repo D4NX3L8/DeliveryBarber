@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito</title>
+    <!-- Esto es para las alertas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+</head>
+
+  <body>
+    <header id="navbar"></header>
+
+    <main>
+      <h1>Mi Carrito</h1>
+
+      <div id="cartContainer"></div>
+
+      <h2>
+        Total:
+        <span id="cartTotal"> $0 </span>
+      </h2>
+
+      <button id="checkoutBtn">Finalizar Compra</button>
+    </main>
+
+    <script
+      type="module"
+      src="../../../public/js/components/navbar.js"
+    ></script>
+
+    <script type="module" src="../../../public/js/client/cart.js"></script>
+    <!-- Esto es para las alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

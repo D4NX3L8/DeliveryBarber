@@ -1,74 +1,56 @@
-/* obtener producto */
 import {
-    getProducts,
-    saveProducts
+  getProducts as getProductsStorage,
+  saveProducts,
 } from "../models/product-model.js";
 
-export function getAllProducts() {
-    return getProducts();
+//Crear producto
+export function createProduct(name, price, stock, image) {
+  const products = getProductsStorage();
+
+  const product = {
+    id: Date.now(),
+
+    name,
+
+    price,
+
+    stock,
+
+    image
+  };
+
+  products.push(product);
+
+  saveProducts(products);
+
+  return product;
 }
 
-/* crear producto */
-export function createProduct(productData) {
-    const products = getProducts();
-
-    const newProduct = {
-        id: crypto.randomUUID(),
-        ...productData
-    };
-
-    products.push(newProduct);
-
-    saveProducts(products);
-
-    return newProduct;
+//Obtener productos
+export function getProducts() {
+  return getProductsStorage();
 }
 
-/* buscar producto */
-export function getProductById(id) {
-    return getProducts().find(
-        product => product.id === id
-    );
+//Actualizar producto
+export function updateProduct(id, updatedData) {
+  const products = getProductsStorage();
+
+  const product = products.find((product) => product.id === id);
+
+  if (!product) {
+    return;
+  }
+
+  Object.assign(product, updatedData);
+
+  saveProducts(products);
 }
 
-/* editar producto */
-export function updateProduct(id, data) {
+//Eliminar producto
+export function deleteProduct(id) {
+  const products = getProductsStorage();
 
-    const products = getProducts();
+  const updatedProducts = products.filter((product) => product.id !== id);
 
-    const index = products.findIndex(
-        product => product.id === id
-    );
-
-    if (index === -1) return false;
-
-    products[index] = {
-        ...products[index],
-        ...data
-    };
-
-    saveProducts(products);
-
-    return true;
-}
-
-/* eliminar producto */
-export function updateProduct(id, data) {
-
-    const products = getProducts();
-
-    const index = products.findIndex(
-        product => product.id === id
-    );
-
-    if (index === -1) return false;
-
-    products[index] = {
-        ...products[index],
-        ...data
-    };
-
-    saveProducts(products);
-
-    return true;
+  saveProducts(updatedProducts);
 }
