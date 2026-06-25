@@ -16,20 +16,31 @@ import {
 const user = getCurrentUser();
 
 const appointmentsContainer = document.getElementById("appointmentsContainer");
+const filterSelect = document.getElementById("appointmentFilter");
 
-const appointments = getBarberAppointments(user.id);
+let appointments = getBarberAppointments(user.id);
 
-if (appointments.length === 0) {
-  appointmentsContainer.innerHTML = `
-        <p>No tienes citas asignadas.</p>
+function renderAppointments(filter = "all") {
+  const filteredAppointments = appointments.filter((appointment) =>
+    filter === "all" ? true : appointment.status === filter,
+  );
+
+  appointmentsContainer.innerHTML = "";
+
+  if (filteredAppointments.length === 0) {
+    appointmentsContainer.innerHTML = `
+        <p>No tienes citas ${
+          filter === "all" ? "asignadas" : "con ese estado"
+        }.</p>
     `;
-}
+    return;
+  }
 
-appointments.forEach((appointment) => {
-  let actions = "";
+  filteredAppointments.forEach((appointment) => {
+    let actions = "";
 
-  if (appointment.status === "pending") {
-    actions = `
+    if (appointment.status === "pending") {
+      actions = `
             <button
                 class="acceptBtn"
                 data-id="${appointment.id}">
@@ -42,19 +53,19 @@ appointments.forEach((appointment) => {
                 Rechazar
             </button>
         `;
-  }
+    }
 
-  if (appointment.status === "accepted") {
-    actions = `
+    if (appointment.status === "accepted") {
+      actions = `
             <button
                 class="completeBtn"
                 data-id="${appointment.id}">
                 Completar
             </button>
         `;
-  }
+    }
 
-  appointmentsContainer.innerHTML += `
+    appointmentsContainer.innerHTML += `
 
         <div>
 
@@ -90,7 +101,75 @@ appointments.forEach((appointment) => {
         </div>
 
     `;
+  });
+
+  attachAppointmentActions();
+}
+
+function attachAppointmentActions() {
+  const acceptButtons = document.querySelectorAll(".acceptBtn");
+
+  acceptButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = Number(button.dataset.id);
+
+      showLoading("Actualizando cita...");
+
+      const accepted = acceptAppointment(id);
+
+      closeLoading();
+
+      if (!accepted) {
+        showError("Ya tienes una cita aceptada para esa fecha y hora.");
+
+        return;
+      }
+
+      showSuccess("Cita aceptada").then(() => {
+        appointments = getBarberAppointments(user.id);
+        renderAppointments(filterSelect?.value || "all");
+      });
+    });
+  });
+
+  const rejectButtons = document.querySelectorAll(".rejectBtn");
+
+  rejectButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = Number(button.dataset.id);
+
+      showLoading("Actualizando cita...");
+      rejectAppointment(id);
+      closeLoading();
+      showSuccess("Cita rechazada").then(() => {
+        appointments = getBarberAppointments(user.id);
+        renderAppointments(filterSelect?.value || "all");
+      });
+    });
+  });
+
+  const completeButtons = document.querySelectorAll(".completeBtn");
+
+  completeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = Number(button.dataset.id);
+
+      showLoading("Actualizando cita...");
+      completeAppointment(id);
+      closeLoading();
+      showSuccess("Cita completada").then(() => {
+        appointments = getBarberAppointments(user.id);
+        renderAppointments(filterSelect?.value || "all");
+      });
+    });
+  });
+}
+
+filterSelect?.addEventListener("change", () => {
+  renderAppointments(filterSelect.value);
 });
+
+renderAppointments();
 
 const acceptButtons = document.querySelectorAll(".acceptBtn");
 

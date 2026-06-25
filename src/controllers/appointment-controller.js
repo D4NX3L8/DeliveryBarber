@@ -197,5 +197,83 @@ export function isDayOff(
         day =>
             day.date === date
     );
+}
 
+export function getAvailableHours(
+    barberId,
+    date
+) {
+    if (!barberId || !date) {
+        return [];
+    }
+
+    const availability = getAvailability(barberId);
+
+    if (
+        !availability ||
+        !availability.startTime ||
+        !availability.endTime
+    ) {
+        return [];
+    }
+
+    if (isDayOff(barberId, date)) {
+        return [];
+    }
+
+    const appointments = getData("appointments");
+
+    const occupiedHours = appointments
+        .filter(
+            (appointment) =>
+                appointment.barberId === barberId &&
+                appointment.date === date &&
+                appointment.status === "accepted",
+        )
+        .map((appointment) => appointment.time);
+
+    return generateTimeSlots(
+        availability.startTime,
+        availability.endTime,
+    ).filter((hour) => !occupiedHours.includes(hour));
+}
+
+export function generateTimeSlots(
+    startTime,
+    endTime
+) {
+    if (!startTime || !endTime) {
+        return [];
+    }
+
+    const [startHour, startMinute] = startTime.split(":").map(Number);
+    const [endHour, endMinute] = endTime.split(":").map(Number);
+
+    if (
+        Number.isNaN(startHour) ||
+        Number.isNaN(startMinute) ||
+        Number.isNaN(endHour) ||
+        Number.isNaN(endMinute)
+    ) {
+        return [];
+    }
+
+    const current = new Date();
+    current.setHours(startHour, startMinute, 0, 0);
+
+    const end = new Date();
+    end.setHours(endHour, endMinute, 0, 0);
+
+    if (current > end) {
+        return [];
+    }
+
+    const slots = [];
+
+    while (current <= end) {
+        slots.push(current.toTimeString().slice(0, 5));
+        current.setHours(current.getHours() + 1);
+    }
+
+    return slots;
 }

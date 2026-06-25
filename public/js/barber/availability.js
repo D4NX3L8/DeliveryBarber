@@ -6,21 +6,24 @@ import {
   deleteDayOff,
 } from "../../../src/controllers/availability-controller.js";
 
-import { getCurrentUser } from "../../../src/controllers/user-controller.js";
+import {
+  getBarberAppointments,
+} from "../../../src/controllers/appointment-controller.js";
 
+import { getCurrentUser } from "../../../src/controllers/user-controller.js";
 import { showSuccess } from "../../../src/utils/alerts.js";
 
 const user = getCurrentUser();
-
 const scheduleForm = document.getElementById("scheduleForm");
-
 const dayOffForm = document.getElementById("dayOffForm");
-
 const daysOffContainer = document.getElementById("daysOffContainer");
+const availabilityCalendar = document.getElementById("availabilityCalendar");
 
 loadAvailability();
 
 renderDaysOff();
+
+renderAvailabilityCalendar();
 
 //Guardar horario laboral
 scheduleForm.addEventListener("submit", (event) => {
@@ -84,6 +87,8 @@ function renderDaysOff() {
     return;
   }
 
+  daysOffContainer.innerHTML = "";
+
   daysOff.forEach((day) => {
     daysOffContainer.innerHTML += `
 
@@ -115,4 +120,50 @@ function renderDaysOff() {
       location.reload();
     });
   });
+}
+
+function renderAvailabilityCalendar() {
+  if (!availabilityCalendar) {
+    return;
+  }
+
+  const availability = getAvailability(user.id);
+  const daysOff = getDayOffs(user.id).map((day) => day.date);
+  const appointments = getBarberAppointments(user.id);
+  const occupiedDates = new Set(
+    appointments
+      .filter((appointment) => appointment.status === "accepted")
+      .map((appointment) => appointment.date),
+  );
+
+  const today = new Date();
+  const daysToShow = 14;
+
+  availabilityCalendar.innerHTML = "";
+
+  for (let index = 0; index < daysToShow; index += 1) {
+    const current = new Date(today);
+    current.setDate(current.getDate() + index);
+
+    const date = current.toISOString().slice(0, 10);
+    let status = "Disponible";
+
+    if (daysOff.includes(date)) {
+      status = "Descanso";
+    } else if (occupiedDates.has(date)) {
+      status = "Ocupado";
+    } else if (
+      !availability ||
+      !availability.startTime ||
+      !availability.endTime
+    ) {
+      status = "Sin horario";
+    }
+
+    availabilityCalendar.innerHTML += `
+      <div>
+        <strong>${date}</strong> - ${status}
+      </div>
+    `;
+  }
 }

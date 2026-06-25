@@ -19,6 +19,15 @@
     <main>
       <h1>Gestión de Citas</h1>
 
+      <label for="appointmentFilter">Filtrar por estado</label>
+      <select id="appointmentFilter">
+        <option value="all">Todas</option>
+        <option value="pending">Pendientes</option>
+        <option value="accepted">Aceptadas</option>
+        <option value="rejected">Rechazadas</option>
+        <option value="completed">Completadas</option>
+      </select>
+
       <div id="appointmentsContainer"></div>
     </main>
 

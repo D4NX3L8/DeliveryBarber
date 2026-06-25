@@ -1,5 +1,7 @@
 import {
   createAppointment,
+  getAvailableHours,
+  getClientAppointments,
   isTimeSlotOccupied,
   isWithinWorkingHours,
   isDayOff,
@@ -24,10 +26,15 @@ import {
 } from "../../../src/utils/alerts.js";
 
 const appointmentForm = document.getElementById("appointmentForm");
-
 const barberSelect = document.getElementById("barber");
+const dateInput = document.getElementById("date");
+const timeSelect = document.getElementById("time");
+const appointmentFilter = document.getElementById("appointmentFilter");
+const appointmentHistoryContainer = document.getElementById("appointmentHistoryContainer");
 
+const currentUser = getCurrentUser();
 const barbers = getUsers().filter((user) => user.role === "barber");
+const clientAppointments = currentUser ? getClientAppointments(currentUser.id) : [];
 
 if (barbers.length === 0) {
   barberSelect.innerHTML = `
@@ -51,6 +58,81 @@ if (barbers.length === 0) {
     `;
   });
 }
+
+barberSelect.addEventListener("change", renderAvailableHours);
+dateInput.addEventListener("change", renderAvailableHours);
+
+function renderAvailableHours() {
+  const barberId = Number(barberSelect.value);
+  const date = dateInput.value;
+
+  let options = `
+      <option value="">
+        Seleccione una hora
+      </option>
+    `;
+
+  if (!barberId || !date) {
+    timeSelect.innerHTML = options;
+    return;
+  }
+
+  const availableHours = getAvailableHours(barberId, date);
+
+  if (availableHours.length === 0) {
+    options += `
+      <option value="">
+        No hay horas disponibles
+      </option>
+    `;
+  } else {
+    availableHours.forEach((hour) => {
+      options += `
+      <option value="${hour}">${hour}</option>
+    `;
+    });
+  }
+
+  timeSelect.innerHTML = options;
+}
+
+function renderClientAppointments(filter = "all") {
+  if (!appointmentHistoryContainer) {
+    return;
+  }
+
+  const filteredAppointments = clientAppointments.filter((appointment) =>
+    filter === "all" ? true : appointment.status === filter,
+  );
+
+  if (filteredAppointments.length === 0) {
+    appointmentHistoryContainer.innerHTML = `
+      <p>No hay citas con ese estado.</p>
+    `;
+    return;
+  }
+
+  appointmentHistoryContainer.innerHTML = filteredAppointments
+    .map(
+      (appointment) => `
+      <div>
+        <p><strong>Servicio:</strong> ${appointment.service}</p>
+        <p><strong>Barbero:</strong> ${appointment.barberName}</p>
+        <p><strong>Fecha:</strong> ${appointment.date}</p>
+        <p><strong>Hora:</strong> ${appointment.time}</p>
+        <p><strong>Dirección:</strong> ${appointment.address}</p>
+        <p><strong>Estado:</strong> ${appointment.status}</p>
+      </div>
+    `,
+    )
+    .join("");
+}
+
+appointmentFilter?.addEventListener("change", () => {
+  renderClientAppointments(appointmentFilter.value);
+});
+
+renderClientAppointments();
 
 appointmentForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -123,7 +205,7 @@ appointmentForm.addEventListener("submit", (event) => {
 
   showLoading("Creando cita...");
 
-  createAppointment(
+  const newAppointment = createAppointment(
     user.id,
     user.name,
     barberId,
@@ -134,9 +216,15 @@ appointmentForm.addEventListener("submit", (event) => {
     address,
   );
 
+  if (newAppointment && currentUser) {
+    clientAppointments.push(newAppointment);
+  }
+
   closeLoading();
 
   showSuccess("Cita creada correctamente");
 
   appointmentForm.reset();
+  renderAvailableHours();
+  renderClientAppointments(appointmentFilter?.value || "all");
 });
