@@ -29,14 +29,37 @@
 
         <select id="barber" required></select>
 
+        <label for="date"> Fecha </label>
+
         <input type="date" id="date" required />
 
-        <input type="time" id="time" required />
+        <label for="time"> Hora </label>
+
+        <select id="time" required>
+          <option value="">Selecciona barbero y fecha</option>
+        </select>
 
         <input type="text" id="address" placeholder="Dirección" required />
 
         <button type="submit">Agendar</button>
       </form>
+
+      <section id="appointmentHistory">
+        <h2>Historial de Citas</h2>
+
+        <label for="appointmentFilter">Filtrar por estado</label>
+
+        <select id="appointmentFilter">
+          <option value="all">Todas</option>
+          <option value="pending">Pendientes</option>
+          <option value="accepted">Aceptadas</option>
+          <option value="rejected">Rechazadas</option>
+          <option value="completed">Completadas</option>
+          <option value="cancelled">Canceladas</option>
+        </select>
+
+        <div id="appointmentHistoryContainer"></div>
+      </section>
     </main>
 
     <script
