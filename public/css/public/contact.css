@@ -1,14 +1,22 @@
-/* ===========================
-   CONTACT PAGE
-   =========================== */
+.contact-info .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding:  4rem;
+}
 
-.contact-info {
-    padding: 70px 0;
+.contact-info .grid.grid-3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .contact-info .card {
     padding: 2rem;
     text-align: center;
+    flex: 1 1 400px;
+    max-width: 460px;
+    box-sizing: border-box;
 }
 
 .contact-info .card h3 {
@@ -19,6 +27,7 @@
 
 .contact-info .card p {
     color: var(--color-texto-oscuro);
+    margin-bottom: 0.75rem;
 }
 
 .card-map {
@@ -29,9 +38,14 @@
     margin-top: 1rem;
     border-radius: 10px;
     width: 100%;
+    transition: filter 0.3s ease; /* Transición suave cuando cambies de tema */
 }
 
-/* Mission / Vision */
+/* Cuando el body NO tiene la clase theme-light (Modo Oscuro activo) */
+body:not(.theme-light) .card-map iframe {
+    filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
 .about-company {
     padding: 70px 0;
     background: var(--fondo-seccion);
@@ -48,7 +62,6 @@
     line-height: 1.8;
 }
 
-/* Contact Form */
 .contact-form-section {
     padding: 70px 0;
 }
@@ -60,7 +73,6 @@
     margin: 0 auto;
 }
 
-/* Work With Us */
 .work-with-us {
     padding: 70px 0;
     background: var(--fondo-seccion);

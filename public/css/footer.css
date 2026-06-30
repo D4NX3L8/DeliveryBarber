@@ -60,6 +60,25 @@ footer {
   color: var(--primary-red);
 }
 
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.footer-socials a {
+  color: var(--color-texto-oscuro);
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-socials a:hover {
+  color: var(--color-principal);
+  transform: translateY(-3px);
+}
+
 .footer-bottom {
   text-align: center;
   padding: 1.25rem 2rem 2rem;

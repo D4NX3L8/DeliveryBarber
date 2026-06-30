@@ -12,6 +12,17 @@ export function renderFooter() {
                     Barbería profesional a domicilio.
                     Calidad, comodidad y estilo en un solo lugar.
                 </p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <wa-icon name="instagram" family="brands" style="font-size: 1.5em"></wa-icon>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <wa-icon name="facebook" family="brands" style="font-size: 1.5em"></wa-icon>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <wa-icon name="tiktok" family="brands" style="font-size: 1.5em"></wa-icon>
+                    </a>
+                </div>
             </div>
 
             <div class="footer-links">
@@ -27,8 +38,7 @@ export function renderFooter() {
 
             <div class="footer-contact">
                 <h4>Contacto</h4>
-
-                <p>Email: deliverybarber.@gmailcom</p>
+                <p>Email: deliverybarber.@gmail.com</p>
                 <p>Teléfono: +57 300 000 0000</p>
                 <p>Medellín, Colombia</p>
             </div>
