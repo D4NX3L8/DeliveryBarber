@@ -32,7 +32,7 @@ purchases.forEach((purchase) => {
 
   container.innerHTML += `
 
-      <div>
+      <div class="history-card card">
 
         <h3>
           Compra

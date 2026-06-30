@@ -92,21 +92,19 @@ function renderDaysOff() {
   daysOff.forEach((day) => {
     daysOffContainer.innerHTML += `
 
-                <div>
+                <div class="dayoff-item card">
 
                     <p>
                         ${day.date}
                     </p>
 
                     <button
-                        class="deleteBtn"
+                        class="deleteBtn btn-secondary-outline"
                         data-id="${day.id}">
                         Eliminar
                     </button>
 
                 </div>
-
-                <hr>
 
             `;
   });
@@ -147,22 +145,27 @@ function renderAvailabilityCalendar() {
 
     const date = current.toISOString().slice(0, 10);
     let status = "Disponible";
+    let statusClass = "available";
 
     if (daysOff.includes(date)) {
       status = "Descanso";
+      statusClass = "day-off";
     } else if (occupiedDates.has(date)) {
       status = "Ocupado";
+      statusClass = "occupied";
     } else if (
       !availability ||
       !availability.startTime ||
       !availability.endTime
     ) {
       status = "Sin horario";
+      statusClass = "no-schedule";
     }
 
     availabilityCalendar.innerHTML += `
-      <div>
-        <strong>${date}</strong> - ${status}
+      <div class="calendar-day ${statusClass}">
+        <strong>${date.slice(5)}</strong>
+        <span>${status}</span>
       </div>
     `;
   }

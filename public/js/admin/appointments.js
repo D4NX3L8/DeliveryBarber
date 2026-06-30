@@ -30,7 +30,9 @@ appointments.forEach((appointment) => {
 
     appointmentsContainer.innerHTML += `
 
-        <div>
+        <div class="appointment-card card">
+
+            <div>
 
             <h3>
                 ${appointment.service}
@@ -56,20 +58,19 @@ appointments.forEach((appointment) => {
                 ${appointment.time}
             </p>
 
-            <p>
-                Estado:
+            <span class="status-badge status-${appointment.status}">
                 ${appointment.status}
-            </p>
+            </span>
+
+            </div>
 
             <button
-                class="deleteBtn"
+                class="deleteBtn btn-secondary-outline"
                 data-id="${appointment.id}">
                 Eliminar
             </button>
 
         </div>
-
-        <hr>
 
     `;
 

@@ -23,20 +23,31 @@
 
 #availabilityCalendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 8px;
   margin-top: 1rem;
 }
 
 .calendar-day {
-  padding: 0.5rem;
+  padding: 0.75rem 0.5rem;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 0.85rem;
-  cursor: pointer;
+  cursor: default;
   border: 1.5px solid var(--color-borde);
   color: var(--color-texto-oscuro);
-  transition: background 0.2s, color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: transform 0.2s ease, background 0.2s, color 0.2s;
+}
+
+.calendar-day:hover {
+  transform: translateY(-3px);
+}
+
+.calendar-day strong {
+  color: var(--color-texto-claro);
 }
 
 .calendar-day.available {
@@ -51,6 +62,17 @@
   border-color: #fca5a5;
 }
 
+.calendar-day.occupied {
+  background: #dbeafe;
+  color: #1e40af;
+  border-color: #93c5fd;
+}
+
+.calendar-day.no-schedule {
+  background: var(--fondo-seccion);
+  color: var(--color-texto-oscuro);
+}
+
 body:not(.theme-light) .calendar-day.available {
   background: #064e3b;
   color: #6ee7b7;
@@ -59,6 +81,11 @@ body:not(.theme-light) .calendar-day.available {
 body:not(.theme-light) .calendar-day.day-off {
   background: #7f1d1d;
   color: #fca5a5;
+}
+
+body:not(.theme-light) .calendar-day.occupied {
+  background: #1e3a5f;
+  color: #93c5fd;
 }
 
 #daysOffContainer {
@@ -72,4 +99,20 @@ body:not(.theme-light) .calendar-day.day-off {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-secondary-outline:hover {
+  background: var(--primary-red);
+  color: #ffffff;
 }

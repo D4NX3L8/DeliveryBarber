@@ -42,13 +42,13 @@ function renderAppointments(filter = "all") {
     if (appointment.status === "pending") {
       actions = `
             <button
-                class="acceptBtn"
+                class="acceptBtn btn btn-primary"
                 data-id="${appointment.id}">
                 Aceptar
             </button>
 
             <button
-                class="rejectBtn"
+                class="rejectBtn btn-secondary-outline"
                 data-id="${appointment.id}">
                 Rechazar
             </button>
@@ -58,7 +58,7 @@ function renderAppointments(filter = "all") {
     if (appointment.status === "accepted") {
       actions = `
             <button
-                class="completeBtn"
+                class="completeBtn btn btn-primary"
                 data-id="${appointment.id}">
                 Completar
             </button>
@@ -67,7 +67,9 @@ function renderAppointments(filter = "all") {
 
     appointmentsContainer.innerHTML += `
 
-        <div>
+        <div class="appointment-card card">
+
+            <div>
 
             <h3>${appointment.service}</h3>
 
@@ -91,12 +93,15 @@ function renderAppointments(filter = "all") {
                 ${appointment.address}
             </p>
 
-            <p>
-                Estado:
+            <span class="status-badge status-${appointment.status}">
                 ${appointment.status}
-            </p>
+            </span>
 
-            ${actions}
+            </div>
+
+            <div class="appointment-actions">
+                ${actions}
+            </div>
 
         </div>
 

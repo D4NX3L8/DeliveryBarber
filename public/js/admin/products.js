@@ -46,31 +46,35 @@ function renderProducts() {
   products.forEach((product) => {
     container.innerHTML += `
 
-        <div>
+        <div class="admin-product-card card">
 
-          <h3>
-            ${product.name}
-          </h3>
+          <img src="${product.image}" alt="${product.name}">
 
-          <p>
-            Precio:
-            $${product.price}
-          </p>
+          <div>
+            <h3>
+              ${product.name}
+            </h3>
 
-          <p>
-            Stock:
-            ${product.stock}
-          </p>
+            <p>
+              Precio:
+              $${product.price}
+            </p>
 
-          <button
-            class="deleteBtn"
-            data-id="${product.id}">
-            Eliminar
-          </button>
+            <p>
+              Stock:
+              ${product.stock}
+            </p>
+          </div>
+
+          <div class="product-actions">
+            <button
+              class="deleteBtn btn-secondary-outline"
+              data-id="${product.id}">
+              Eliminar
+            </button>
+          </div>
 
         </div>
-
-        <hr>
 
       `;
   });

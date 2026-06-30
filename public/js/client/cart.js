@@ -1,5 +1,7 @@
 import { getCart, saveCart } from "../../../src/models/cart-model.js";
 
+import { removeFromCart } from "../../../src/controllers/cart-controller.js";
+
 import { getProducts } from "../../../src/controllers/product-controller.js";
 
 import { getCurrentUser } from "../../../src/controllers/user-controller.js";
@@ -22,6 +24,8 @@ function renderCart() {
   const products = getProducts();
 
   let total = 0;
+
+  container.innerHTML = "";
 
   if (cart.length === 0) {
     container.innerHTML = `
@@ -46,30 +50,47 @@ function renderCart() {
 
     container.innerHTML += `
 
-        <div>
+        <div class="cart-item card">
 
-          <h3>
-            ${product.name}
-          </h3>
+          <img src="${product.image}" alt="${product.name}">
 
-          <p>
-            Cantidad:
-            ${item.quantity}
-          </p>
+          <div>
+            <h3>
+              ${product.name}
+            </h3>
 
-          <p>
-            Precio:
-            $${product.price}
-          </p>
+            <p>
+              Cantidad:
+              ${item.quantity}
+            </p>
+
+            <p>
+              Precio:
+              $${product.price}
+            </p>
+          </div>
+
+          <button
+            class="removeBtn btn-secondary-outline"
+            data-id="${product.id}">
+            Quitar
+          </button>
 
         </div>
-
-        <hr>
 
       `;
   });
 
   totalElement.textContent = `$${total}`;
+
+  const removeButtons = container.querySelectorAll(".removeBtn");
+
+  removeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      removeFromCart(Number(button.dataset.id));
+      renderCart();
+    });
+  });
 }
 
 checkoutBtn.addEventListener("click", () => {

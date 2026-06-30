@@ -1,15 +1,15 @@
 .application-list {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .application-card {
   padding: 1.75rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .application-card h3 {
@@ -25,6 +25,22 @@
 
 .application-actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
+}
+
+.application-actions .btn {
+  padding: 10px 22px;
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+.btn-secondary-outline:hover {
+  background: var(--primary-red);
+  color: #ffffff;
 }

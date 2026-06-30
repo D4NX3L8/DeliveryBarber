@@ -18,6 +18,9 @@ const appointmentsCount =
 const pendingCount =
     document.getElementById("pendingCount");
 
+const completedCount =
+    document.getElementById("completedCount");
+
 const appointments =
     getBarberAppointments(user.id);
 
@@ -32,3 +35,10 @@ const pendingAppointments =
 
 pendingCount.textContent =
     pendingAppointments.length;
+
+if (completedCount) {
+    completedCount.textContent =
+        appointments.filter(
+            appointment => appointment.status === "completed"
+        ).length;
+}

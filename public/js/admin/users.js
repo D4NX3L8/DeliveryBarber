@@ -15,7 +15,9 @@ users.forEach((user) => {
 
     usersContainer.innerHTML += `
 
-        <div>
+        <div class="user-card card">
+
+            <div>
 
             <h3>
                 ${user.name}
@@ -25,13 +27,14 @@ users.forEach((user) => {
                 ${user.email}
             </p>
 
-            <p>
-                Rol:
+            <span class="user-role-badge">
                 ${user.role}
-            </p>
+            </span>
+
+            </div>
 
             <button
-                class="deleteBtn"
+                class="deleteBtn btn-secondary-outline"
                 data-id="${user.id}">
                 Eliminar
             </button>

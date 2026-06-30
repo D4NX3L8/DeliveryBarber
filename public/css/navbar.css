@@ -190,3 +190,25 @@ body:not(.theme-light) .logo {
     gap: 10px;
   }
 }
+
+/* Cart item counter badge */
+.cart-count {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--primary-red);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.cart-count--visible {
+  display: inline-flex;
+}

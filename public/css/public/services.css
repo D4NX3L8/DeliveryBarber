@@ -3,70 +3,90 @@
    =========================== */
 
 .services-list {
-    padding: 70px 0;
+  padding: 70px 0;
 }
 
 .services-list .service-card {
-    text-align: center;
-    padding: 2rem;
-    transition: transform 0.3s ease, border-color 0.3s;
+  text-align: center;
+  padding: 2rem;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s;
 }
 
 .services-list .service-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-red);
+  transform: translateY(-8px);
+  border-color: var(--primary-red);
 }
 
 .services-list .service-card h3 {
-    color: var(--color-principal);
-    font-size: 1.2rem;
-    margin-bottom: 0.6rem;
+  color: var(--color-principal);
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+.service-image img {
+  width: 100%;
+  height: 200px; /* Ajusta la altura a tu gusto */
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  display: block;
 }
 
+.service-card {
+  padding: 0; /* Si tu tarjeta tenía padding, intenta ajustarlo aquí */
+  overflow: hidden;
+}
+
+/* Ajusta los textos si es necesario al quitar el padding de la card */
+.service-card h3,
+.service-card p,
+.service-card span {
+  padding: 0 1rem;
+}
 .service-duration {
-    display: inline-block;
-    margin-top: 0.75rem;
-    padding: 0.3rem 0.9rem;
-    background: rgba(0, 86, 179, 0.1);
-    color: var(--primary-blue);
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 600;
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.3rem 0.9rem;
+  background: rgba(0, 86, 179, 0.1);
+  color: var(--primary-blue);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 body:not(.theme-light) .service-duration {
-    background: rgba(74, 158, 255, 0.15);
-    color: #4a9eff;
+  background: rgba(74, 158, 255, 0.15);
+  color: #4a9eff;
 }
 
 /* Benefits */
 .benefits {
-    padding: 70px 0;
-    background: var(--fondo-seccion);
-    transition: background-color 0.3s;
+  padding: 70px 0;
+  background: var(--fondo-seccion);
+  transition: background-color 0.3s;
 }
 
 .benefits .benefit-card h3 {
-    color: var(--color-principal);
-    margin-bottom: 0.5rem;
+  color: var(--color-principal);
+  margin-bottom: 0.5rem;
 }
 
 .benefits .benefit-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-red);
+  transform: translateY(-8px);
+  border-color: var(--primary-red);
 }
 
 /* How it works */
 .how-it-works {
-    padding: 70px 0;
+  padding: 70px 0;
 }
 
 .how-it-works .card h3 {
-    color: var(--color-principal);
-    margin-bottom: 0.5rem;
+  color: var(--color-principal);
+  margin-bottom: 0.5rem;
 }
 
 .how-it-works .card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-red);
+  transform: translateY(-8px);
+  border-color: var(--primary-red);
 }

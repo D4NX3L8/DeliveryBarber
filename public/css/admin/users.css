@@ -14,19 +14,42 @@
 
 .user-card h3 {
   color: var(--color-principal);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .user-card p {
   color: var(--color-texto-oscuro);
   font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
 .user-role-badge {
+  display: inline-block;
   padding: 0.3rem 0.9rem;
-  background: rgba(0,86,179,0.1);
+  background: rgba(0, 86, 179, 0.1);
   color: var(--primary-blue);
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 700;
+  text-transform: capitalize;
+}
+
+body:not(.theme-light) .user-role-badge {
+  background: rgba(74, 158, 255, 0.15);
+  color: #4a9eff;
+}
+
+.user-card .btn-secondary-outline {
+  background: transparent;
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.user-card .btn-secondary-outline:hover {
+  background: var(--primary-red);
+  color: #ffffff;
 }

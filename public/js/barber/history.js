@@ -43,7 +43,7 @@ completedAppointments.forEach(
 
         historyContainer.innerHTML += `
 
-            <div>
+            <div class="history-card card">
 
                 <h3>
                     ${appointment.service}

@@ -14,6 +14,12 @@ const welcomeMessage =
 const appointmentsCount =
     document.getElementById("appointmentsCount");
 
+const pendingCount =
+    document.getElementById("pendingCount");
+
+const completedCount =
+    document.getElementById("completedCount");
+
 const appointmentsContainer =
     document.getElementById("appointmentsContainer");
 
@@ -25,6 +31,20 @@ const appointments =
 
 appointmentsCount.textContent =
     appointments.length;
+
+if (pendingCount) {
+    pendingCount.textContent =
+        appointments.filter(
+            appointment => appointment.status === "pending"
+        ).length;
+}
+
+if (completedCount) {
+    completedCount.textContent =
+        appointments.filter(
+            appointment => appointment.status === "completed"
+        ).length;
+}
 
 if (appointments.length === 0) {
 

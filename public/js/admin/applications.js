@@ -37,7 +37,9 @@ applications.forEach((application) => {
 
     applicationsContainer.innerHTML += `
 
-        <div>
+        <div class="application-card card">
+
+            <div>
 
             <h3>
                 ${application.name}
@@ -57,22 +59,26 @@ applications.forEach((application) => {
                 ${application.status}
             </p>
 
+            </div>
+
+            <div class="application-actions">
+
             <button
-                class="approveBtn"
+                class="approveBtn btn btn-primary"
                 data-id="${application.id}"
                 data-userid="${application.userId}">
                 Aprobar
             </button>
 
             <button
-                class="rejectBtn"
+                class="rejectBtn btn btn-secondary-outline"
                 data-id="${application.id}">
                 Rechazar
             </button>
 
-        </div>
+            </div>
 
-        <hr>
+        </div>
 
     `;
 

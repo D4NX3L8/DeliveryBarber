@@ -115,13 +115,15 @@ function renderClientAppointments(filter = "all") {
   appointmentHistoryContainer.innerHTML = filteredAppointments
     .map(
       (appointment) => `
-      <div>
-        <p><strong>Servicio:</strong> ${appointment.service}</p>
-        <p><strong>Barbero:</strong> ${appointment.barberName}</p>
-        <p><strong>Fecha:</strong> ${appointment.date}</p>
-        <p><strong>Hora:</strong> ${appointment.time}</p>
-        <p><strong>Dirección:</strong> ${appointment.address}</p>
-        <p><strong>Estado:</strong> ${appointment.status}</p>
+      <div class="appointment-card card">
+        <div>
+          <h3>${appointment.service}</h3>
+          <p><strong>Barbero:</strong> ${appointment.barberName}</p>
+          <p><strong>Fecha:</strong> ${appointment.date}</p>
+          <p><strong>Hora:</strong> ${appointment.time}</p>
+          <p><strong>Dirección:</strong> ${appointment.address}</p>
+        </div>
+        <span class="status-badge status-${appointment.status}">${appointment.status}</span>
       </div>
     `,
     )

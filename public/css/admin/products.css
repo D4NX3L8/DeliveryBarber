@@ -3,28 +3,30 @@
   gap: 1rem;
   max-width: 560px;
   margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 #productsContainer {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 
 .admin-product-card {
   padding: 1.5rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
 }
 
 .admin-product-card img {
-  width: 70px;
-  height: 70px;
+  width: 100%;
+  height: 140px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
+  margin-bottom: 0.25rem;
 }
 
 .admin-product-card h3 {
@@ -38,5 +40,23 @@
 
 .product-actions {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
+  margin-top: auto;
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-secondary-outline:hover {
+  background: var(--primary-red);
+  color: #ffffff;
 }

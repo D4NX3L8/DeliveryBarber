@@ -3,6 +3,8 @@ import {
     logoutUser
 } from "../../../src/controllers/user-controller.js";
 
+import { getCart } from "../../../src/models/cart-model.js";
+
 const navbar = document.getElementById("navbar");
 const user = getCurrentUser();
 const logoDefault = "/public/images/logo-oscuro.png";
@@ -52,7 +54,7 @@ function renderNavbar() {
           <ul>
             <li><a href="../client/dashboard.html">Dashboard</a></li>
             <li><a href="../client/appointments.html">Mis Citas</a></li>
-            <li><a href="../client/cart.html">Carrito</a></li>
+            <li><a href="../client/cart.html">Carrito<span id="cartCount" class="cart-count"></span></a></li>
             <li><a href="../client/purchase-history.html">Historial</a></li>
             <li><a href="../public/services.html">Servicios</a></li>
             <li><a href="../public/products.html">Productos</a></li>
@@ -182,6 +184,23 @@ function setupLogout() {
   });
 }
 
+function renderCartCount() {
+  const cartCountEl = document.getElementById('cartCount');
+  if (!cartCountEl) return;
+
+  const cart = getCart();
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  if (totalItems > 0) {
+    cartCountEl.textContent = totalItems;
+    cartCountEl.classList.add('cart-count--visible');
+  } else {
+    cartCountEl.textContent = '';
+    cartCountEl.classList.remove('cart-count--visible');
+  }
+}
+
 renderNavbar();
 setupTheme();
 setupLogout();
+renderCartCount();

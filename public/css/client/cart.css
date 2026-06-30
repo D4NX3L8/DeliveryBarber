@@ -24,6 +24,11 @@
   border-radius: 10px;
 }
 
+.cart-item > div {
+  flex: 1;
+  min-width: 160px;
+}
+
 .cart-item h3 {
   color: var(--color-principal);
   margin-bottom: 0.25rem;
@@ -52,4 +57,20 @@
   font-weight: 800;
   color: var(--primary-red);
   display: block;
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-secondary-outline:hover {
+  background: var(--primary-red);
+  color: #ffffff;
 }
