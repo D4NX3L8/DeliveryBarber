@@ -18,9 +18,6 @@ const appointmentsCount =
 const pendingCount =
     document.getElementById("pendingCount");
 
-welcomeMessage.textContent =
-    `Bienvenido ${user.name}`;
-
 const appointments =
     getBarberAppointments(user.id);
 

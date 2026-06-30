@@ -10,7 +10,6 @@ const logoDark = "/public/images/logo.png";
 
 const themeButtonTemplate = `
     <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema">
-      <img class="theme-icon" src="/public/images/modo%20normal.png" alt="Modo normal" />
       <span class="theme-label">Modo normal</span>
     </button>`;
 

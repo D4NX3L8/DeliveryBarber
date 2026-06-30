@@ -1,16 +1,101 @@
+/* ===========================
+   PUBLIC PRODUCTS PAGE
+   =========================== */
 
-.products-list > div {
-  border: 1px solid rgba(255,255,255,.1);
+.page-hero {
+    background: linear-gradient(135deg, var(--primary-blue), #003a80);
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
 }
 
-.products-list > div h3 {
-  font-size: 1.4rem;
+.page-hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.75rem;
 }
 
-.products-list > div p {
-  margin: 0;
+.page-hero p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    max-width: 560px;
+    margin: 0 auto;
 }
 
-.products-list > div hr {
-  border-color: rgba(255,255,255,.08);
+.products-list {
+    padding: 60px 0;
+}
+
+#productsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--primary-blue);
+    transition: transform 0.3s ease, border-top-color 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    border-top-color: var(--primary-red);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-principal);
+}
+
+.product-card p {
+    color: var(--color-texto-oscuro);
+    font-size: 0.9rem;
+}
+
+.product-price {
+    font-weight: 700;
+    color: var(--primary-red);
+    font-size: 1.1rem;
+    margin-top: auto;
+}
+
+.product-stock {
+    font-size: 0.85rem;
+    color: var(--color-texto-oscuro);
+}
+
+.add-to-cart-btn {
+    background: var(--primary-red);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.add-to-cart-btn:hover {
+    background: #b0021f;
 }

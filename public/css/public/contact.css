@@ -1,23 +1,90 @@
+/* ===========================
+   CONTACT PAGE
+   =========================== */
 
-.contact-info .card,
-.about-company .card,
-.work-with-us .card {
-  background: rgba(255,255,255,.04);
+.contact-info {
+    padding: 70px 0;
 }
 
-.contact-info .grid-3,
-.about-company .grid-2,
-.work-with-us .grid-2 {
-  gap: 1.5rem;
+.contact-info .card {
+    padding: 2rem;
+    text-align: center;
 }
 
-.form-input,
-.form-textarea {
-  color: var(--color-texto-claro);
+.contact-info .card h3 {
+    color: var(--color-principal);
+    margin-bottom: 0.75rem;
+    font-size: 1.15rem;
 }
 
-button.btn-primary,
-button[type="submit"] {
-  width: fit-content;
-  min-width: 220px;
+.contact-info .card p {
+    color: var(--color-texto-oscuro);
+}
+
+.card-map {
+    text-align: left;
+}
+
+.card-map iframe {
+    margin-top: 1rem;
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* Mission / Vision */
+.about-company {
+    padding: 70px 0;
+    background: var(--fondo-seccion);
+    transition: background-color 0.3s;
+}
+
+.about-company .card h2 {
+    color: var(--color-principal);
+    margin-bottom: 0.75rem;
+}
+
+.about-company .card p {
+    color: var(--color-texto-oscuro);
+    line-height: 1.8;
+}
+
+/* Contact Form */
+.contact-form-section {
+    padding: 70px 0;
+}
+
+.contact-form-section form {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* Work With Us */
+.work-with-us {
+    padding: 70px 0;
+    background: var(--fondo-seccion);
+    transition: background-color 0.3s;
+}
+
+.work-with-us p {
+    color: var(--color-texto-oscuro);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.work-with-us form {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 760px;
+    margin: 1.5rem auto 0;
+}
+
+.btn-primary,
+button[type="submit"].btn-primary {
+    width: fit-content;
+    min-width: 200px;
 }

@@ -1,18 +1,75 @@
-
-.availability-grid {
-  display: grid;
-  gap: 1.5rem;
+.availability-grid .card {
+  margin-bottom: 1.5rem;
+  padding: 2rem;
 }
 
-#scheduleForm,
-#dayOffForm {
+.availability-grid .card h2 {
+  color: var(--color-principal);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+#scheduleForm {
   display: grid;
   gap: 1rem;
+}
+
+#dayOffForm {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+#availabilityCalendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
   margin-top: 1rem;
+}
+
+.calendar-day {
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1.5px solid var(--color-borde);
+  color: var(--color-texto-oscuro);
+  transition: background 0.2s, color 0.2s;
+}
+
+.calendar-day.available {
+  background: #d1fae5;
+  color: #065f46;
+  border-color: #6ee7b7;
+}
+
+.calendar-day.day-off {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+body:not(.theme-light) .calendar-day.available {
+  background: #064e3b;
+  color: #6ee7b7;
+}
+
+body:not(.theme-light) .calendar-day.day-off {
+  background: #7f1d1d;
+  color: #fca5a5;
 }
 
 #daysOffContainer {
-  margin-top: 1rem;
   display: grid;
-  gap: .85rem;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.dayoff-item {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

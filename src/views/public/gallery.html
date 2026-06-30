@@ -1,89 +1,93 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería | DeliveryBarber</title>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Galería | DeliveryBarber</title>
-
-    <link rel="stylesheet" href="/public/css/global.css" />
-    <link rel="stylesheet" href="/public/css/navbar.css" />
-    <link rel="stylesheet" href="/public/css/footer.css" />
-    <link rel="stylesheet" href="/public/css/public/gallery.css" />
-    <!-- Esto es para las alertas -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+  <link rel="stylesheet" href="/public/css/global.css" />
+  <link rel="stylesheet" href="/public/css/navbar.css" />
+  <link rel="stylesheet" href="/public/css/footer.css" />
+  <link rel="stylesheet" href="/public/css/public/gallery.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
 </head>
-  <body>
 
-    <!-- Navbar -->
-    <header id="navbar"></header>
+<body>
+  <header id="navbar"></header>
 
-    <main>
-      <!-- galeria cortes -->
-      <section class="gallery-section">
-        <div class="container">
-          <h2 class="section-title">Algunos de Nuestros Trabajos</h2>
-          <div class="gallery-grid">
-            <div class="gallery-image">
-              <img src="/public/images/corte1.png" alt="" />
-            </div>
-            <div class="gallery-image">
-              <img src="/public/images/corte2.png" alt="" />
-            </div>
-            <div class="gallery-image">
-              <img src="/public/images/fade1.png" alt="" />
-            </div>
-            <div class="gallery-image">
-              <img src="/public/images/corte4.png" alt="" />
-            </div>
+  <main>
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <h1>Galería de Trabajos</h1>
+        <p>Descubre algunos de los cortes y estilos realizados por nuestros barberos profesionales.</p>
+      </div>
+    </section>
+
+    <!-- Galería de cortes -->
+    <section class="gallery-section">
+      <div class="container">
+        <h2 class="section-title">Algunos de Nuestros Trabajos</h2>
+        <div class="gallery-grid">
+          <div class="gallery-image">
+            <img src="/public/images/corte1.png" alt="Corte de cabello 1" />
+          </div>
+          <div class="gallery-image">
+            <img src="/public/images/corte2.png" alt="Corte de cabello 2" />
+          </div>
+          <div class="gallery-image">
+            <img src="/public/images/corte3.png" alt="Corte de cabello 3" />
+          </div>
+          <div class="gallery-image">
+            <img src="/public/images/corte4.png" alt="Corte de cabello 4" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- cortes comunes -->
-      <section class="haircuts">
-        <div class="container">
-          <h2 class="section-title">Estilos Más Solicitados</h2>
-
-          <div class="grid grid-3">
-            <article class="card">
-              <h3>Fade</h3>
-
-              <p>Degradado moderno y elegante.</p>
-              <img src="https://i.pinimg.com/736x/a5/51/ec/a551ec81bfe4340352bbcc20cbe4a6d0.jpg" alt="Fade" />
-            </article>
-
-            <article class="card">
-              <h3>Buzz Cut</h3>
-
-              <p>Corte corto y de fácil mantenimiento.</p>
-              <img src="https://i.pinimg.com/736x/a0/5d/be/a05dbe23dfb723289700831eed4ccdb3.jpg" alt="Buzz Cut" />
-            </article>
-          </div>
+    <!-- Estilos populares -->
+    <section class="haircuts">
+      <div class="container">
+        <h2 class="section-title">Estilos Más Solicitados</h2>
+        <div class="grid grid-3">
+          <article class="card">
+            <h3>Fade</h3>
+            <p>Degradado moderno y elegante.</p>
+            <img src="https://i.pinimg.com/736x/a5/51/ec/a551ec81bfe4340352bbcc20cbe4a6d0.jpg" alt="Estilo Fade" />
+          </article>
+          <article class="card">
+            <h3>Buzz Cut</h3>
+            <p>Corte corto y de fácil mantenimiento.</p>
+            <img src="https://i.pinimg.com/736x/a0/5d/be/a05dbe23dfb723289700831eed4ccdb3.jpg" alt="Buzz Cut" />
+          </article>
+          <article class="card">
+            <h3>Undercut</h3>
+            <p>Estilo clásico con personalidad propia.</p>
+            <img src="https://i.pinimg.com/736x/a5/51/ec/a551ec81bfe4340352bbcc20cbe4a6d0.jpg" alt="Undercut" />
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- cta -->
-      <section class="cta">
-        <div class="container">
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta">
           <h2>Inspírate y agenda tu próximo corte</h2>
-
           <p>Regístrate y encuentra al barbero ideal para ti.</p>
-
           <a href="../auth/register.html" class="btn btn-primary">
             Crear Cuenta
           </a>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <!-- Footer -->
-    <footer id="footer"></footer>
+  <footer id="footer"></footer>
 
-    <!-- Componentes -->
-    <script type="module" src="../../../public/js/components/navbar.js"></script>
-    <script type="module" src="../../../public/js/components/footer.js"></script>
-    <!-- Esto es para las alertas -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../../../public/js/components/navbar.js"></script>
+    <script src="../../../public/js/components/hamburger.js"></script>
+  <script type="module" src="../../../public/js/components/footer.js"></script>
 </body>
 </html>

@@ -40,14 +40,6 @@ export function renderFooter() {
                 © 2026 DeliveryBarber. Todos los derechos reservados.
             </p>
         </div>
-
-        <div class="footer-team">
-            <h4>Equipo de Desarrollo</h4>
-
-            <p>Juan Pablo Arismendy</p>
-            <p>Integrante 2</p>
-            <p>Integrante 3</p>
-        </div>
     `;
 }
 

@@ -1,9 +1,44 @@
-
 .appointments-list {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .appointment-card {
-  padding: 1.75rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+
+.appointment-card h3 {
+  color: var(--color-principal);
+  margin-bottom: 0.4rem;
+}
+
+.appointment-card p {
+  color: var(--color-texto-oscuro);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.status-badge {
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-pending   { background: #fef3c7; color: #92400e; }
+.status-accepted  { background: #d1fae5; color: #065f46; }
+.status-rejected  { background: #fee2e2; color: #991b1b; }
+.status-completed { background: #dbeafe; color: #1e40af; }
+.status-cancelled { background: #f3f4f6; color: #6b7280; }
+
+body:not(.theme-light) .status-pending   { background: #45320a; color: #fde68a; }
+body:not(.theme-light) .status-accepted  { background: #064e3b; color: #6ee7b7; }
+body:not(.theme-light) .status-rejected  { background: #7f1d1d; color: #fca5a5; }
+body:not(.theme-light) .status-completed { background: #1e3a5f; color: #93c5fd; }
+body:not(.theme-light) .status-cancelled { background: #374151; color: #d1d5db; }

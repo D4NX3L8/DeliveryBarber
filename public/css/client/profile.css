@@ -1,11 +1,16 @@
-
 .profile-card {
-  max-width: 720px;
+  max-width: 680px;
+  padding: 2rem;
   display: grid;
   gap: 1.25rem;
-  padding: 2rem;
+}
+
+.profile-card h2 {
+  color: var(--color-principal);
+  margin-bottom: 0.25rem;
 }
 
 .profile-card textarea {
-  min-height: 160px;
+  min-height: 150px;
+  resize: vertical;
 }

@@ -1,9 +1,30 @@
-
 .application-list {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .application-card {
   padding: 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.application-card h3 {
+  color: var(--color-principal);
+  margin-bottom: 0.4rem;
+}
+
+.application-card p {
+  color: var(--color-texto-oscuro);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.application-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }

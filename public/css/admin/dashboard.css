@@ -1,15 +1,28 @@
-
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
 .dashboard-card {
-  min-height: 180px;
+  min-height: 160px;
   padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dashboard-card h2 {
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--color-texto-oscuro);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dashboard-card p {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-principal);
 }

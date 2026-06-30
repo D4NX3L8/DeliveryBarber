@@ -1,8 +1,8 @@
-
 footer {
   background: var(--fondo-seccion);
   color: var(--color-texto-claro);
   border-top: 1px solid var(--color-borde);
+  transition: background-color 0.3s ease;
 }
 
 .footer-container {
@@ -20,7 +20,7 @@ footer {
 .footer-links,
 .footer-contact,
 .footer-team {
-  flex: 1 1 220px;
+  flex: 1 1 200px;
 }
 
 .footer-brand h3,
@@ -29,40 +29,49 @@ footer {
 .footer-team h4 {
   margin-bottom: 1rem;
   color: var(--color-texto-claro);
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .footer-brand p,
 .footer-contact p,
-.footer-team p,
-.footer-links a {
+.footer-team p {
   color: var(--color-texto-oscuro);
   line-height: 1.8;
+  font-size: 0.9rem;
 }
 
 .footer-links ul {
   list-style: none;
+  padding: 0;
 }
 
 .footer-links li {
-  margin-bottom: .7rem;
+  margin-bottom: 0.6rem;
 }
 
 .footer-links a {
   color: var(--color-texto-oscuro);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: var(--color-texto-claro);
+  color: var(--primary-red);
 }
 
 .footer-bottom {
   text-align: center;
-  padding: 1.25rem 0 2rem;
+  padding: 1.25rem 2rem 2rem;
   color: var(--color-texto-oscuro);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--color-borde);
 }
 
 @media (max-width: 768px) {
   .footer-container {
+    flex-direction: column;
     gap: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 }
