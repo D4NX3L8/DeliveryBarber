@@ -1,9 +1,8 @@
-import { getPurchases, savePurchases } from "../models/purchase-model.js";
-
+import { getPurchases as getPurchasesStorage, savePurchases } from "../models/purchase-model.js";
 import { getProducts, saveProducts } from "../models/product-model.js";
 
 export function createPurchase(userId, products, total) {
-  const purchases = getPurchases();
+  const purchases = getPurchasesStorage();
 
   purchases.push({
     id: crypto.randomUUID(),
@@ -26,4 +25,14 @@ export function createPurchase(userId, products, total) {
   });
 
   saveProducts(allProducts);
+}
+
+export function getPurchases() {
+  return getPurchasesStorage();
+}
+
+export function getUserPurchases(userId) {
+  return getPurchasesStorage().filter(
+    (purchase) => purchase.userId === userId
+  );
 }
